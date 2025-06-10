@@ -1,0 +1,272 @@
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { ChevronRight, Plus, Minus, PlayCircle, Instagram, Twitter, Facebook } from "lucide-react"
+import Header from "@/components/Header/header"
+import Footer from "@/components/Footer/footer"
+
+// Placeholder data - replace with your actual content
+const faqData = [
+  {
+    question: "What services does your consultancy company provide?",
+    answer:
+      "You can reach us through our contact page on the website where you'll find our phone number, email address and a convenient contact form. We are also available on social media platforms such as list relevant platform.",
+  },
+  {
+    question: "How can I contact your consultancy firm?",
+    answer:
+      "Our firm specializes in a variety of industries including technology, healthcare, finance, and retail. We tailor our services to meet the specific needs of each sector.",
+  },
+  {
+    question: "What industries does your consultancy company specialize in?",
+    answer:
+      "We work with businesses of all sizes, from startups to large corporations. Our scalable solutions are designed to fit your specific business requirements.",
+  },
+  {
+    question: "How does the consultation process work?",
+    answer:
+      "The consultation process typically involves an initial assessment, strategy development, implementation, and ongoing support. We work closely with you at each stage.",
+  },
+  {
+    question: "What sets your consultancy services apart from others?",
+    answer:
+      "Our commitment to client success, data-driven insights, and experienced consultants set us apart. We focus on delivering measurable results.",
+  },
+  {
+    question: "How much do your consultancy services cost?",
+    answer:
+      "Service costs vary depending on the scope and complexity of the project. We offer transparent pricing and can provide a custom quote after an initial consultation.",
+  },
+  {
+    question: "Can you provide references or case studies?",
+    answer:
+      "Yes, we can provide references and case studies upon request. These demonstrate our track record of success with previous clients.",
+  },
+  {
+    question: "Is my business size suitable for your consultancy services?",
+    answer:
+      "Absolutely. We cater to businesses of all sizes, from startups and SMEs to large enterprises. Our solutions are scalable and tailored to your specific needs.",
+  },
+]
+
+const processSteps = [
+  {
+    step: "Step-01",
+    title: "Find business needs",
+    description: "Trade stocks of the biggest names in the international stock market",
+  },
+  {
+    step: "Step-02",
+    title: "Solutions tailored to your needs",
+    description: "Trade stocks of the biggest names in the international stock market",
+  },
+  {
+    step: "Step-03",
+    title: "Align tactic with objective",
+    description: "Trade stocks of the biggest names in the international stock market",
+  },
+  {
+    step: "Step-04",
+    title: "Results deliver measurable",
+    description: "Trade stocks of the biggest names in the international stock market",
+  },
+]
+
+export default function ServiceDetailPage() {
+  return (
+    <>
+    <Header/>
+    <div className="bg-white text-neutral-800">
+      {/* Hero Section */}
+      <section className="relative bg-neutral-50 py-16 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-neutral-500 mb-2">SERVICES DETAILS</p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Chain & Supply Advisory</h1>
+            </div>
+            <div className="md:text-right">
+              <p className="text-neutral-600 mb-4 max-w-md ml-auto">
+                Crafting new bright brand unique visual systems digital experience focused on wide range of original
+                collabs.
+              </p>
+              <a href="#" className="inline-flex items-center font-semibold text-neutral-800 hover:text-neutral-600">
+                See the plan <ChevronRight className="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 md:mt-16">
+            <Image
+              src="/placeholder.svg?width=1200&height=600"
+              alt="Team collaborating in a modern office"
+              width={1200}
+              height={600}
+              className="w-full h-auto object-cover rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden md:flex flex-col items-center space-y-4 p-4 mr-2">
+          <span className="text-xs uppercase tracking-widest transform -rotate-90 whitespace-nowrap">Follow Us</span>
+          <div className="w-px h-8 bg-neutral-300 my-2"></div>
+          <a href="#" aria-label="Twitter" className="text-neutral-500 hover:text-neutral-800">
+            <Twitter className="w-5 h-5" />
+          </a>
+          <a href="#" aria-label="Instagram" className="text-neutral-500 hover:text-neutral-800">
+            <Instagram className="w-5 h-5" />
+          </a>
+          <a href="#" aria-label="Facebook" className="text-neutral-500 hover:text-neutral-800">
+            <Facebook className="w-5 h-5" />
+          </a>
+        </div>
+      </section>
+
+      {/* Offerings Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Lose the location limitation Seamlessly hire & manage worldwide.
+              </h2>
+              <p className="text-neutral-600 mb-8">
+                You need the best person for the job, wherever they're located. We provide support, payroll tax
+                management, and compliance management for remote, multi-state, multi-location, and international
+                employees.
+              </p>
+              <h3 className="text-xl font-semibold mb-3">Binox Offerings</h3>
+              <ul className="space-y-2 mb-8">
+                {[
+                  "We believe that the human essential to start any successful project and that this where splendid emotion between the re-generated company.",
+                  "We believe that the human essential to start any successful project and that this where splendid emotion between the re-generated company.",
+                  "We believe that the human essential to start any successful project and that this where splendid emotion between the re-generated company.",
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-neutral-500 mr-2 mt-1 shrink-0" />
+                    <span className="text-neutral-600">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <h3 className="text-xl font-semibold mb-3">What's included binox service?</h3>
+              <ul className="space-y-2 mb-8">
+                {["Multi-state payroll processing", "National benefit products", "HR reporting"].map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <Plus className="w-5 h-5 text-neutral-500 mr-2 mt-1 shrink-0" />
+                    <span className="text-neutral-600">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button size="lg" className="bg-neutral-800 text-white hover:bg-neutral-700">
+                Contact Us <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+            <div>
+              <Image
+                src="/placeholder.svg?width=600&height=700"
+                alt="Professional businesswoman in a meeting"
+                width={600}
+                height={700}
+                className="w-full h-auto object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-16 md:py-24 bg-neutral-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <p className="text-neutral-600 mb-4">
+              Myriam was first trained as a sculptor in Montreal and then in Helsinki, Finland. She is now based in
+              Quebec but works for clients all around the globe. From textile design to murals, editorial illustrations
+              and book covers, her style is recognized by her simple and perfectly arranged shapes as well as her rich
+              and vibrant color palette. Striking pewter studded epaulettes silver zips inner drawstring waist channel
+              urban edge breasted jacket. detail elegant with neutral color scheme quartz leather strap fasten buckle
+              clasp.
+            </p>
+            <p className="text-neutral-600">
+              However, the same reason also makes it messy. If someone is having a bad day, we might see it as a sign of
+              tension or lack of investment in the project, for outsider lacking an understanding of the complex
+              dynamics of a team can lead to the wrong conclusions.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Dotted line connector - simplified for responsiveness */}
+            <div
+              className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-neutral-300 -translate-y-1/2"
+              style={{ top: "calc(1.25rem + 4px)" }}
+            ></div>
+            <div className="grid md:grid-cols-4 gap-8">
+              {processSteps.map((item, index) => (
+                <div key={index} className="relative text-center md:text-left bg-white p-6 rounded-lg shadow-md">
+                  <div className="flex justify-center md:justify-start items-center mb-4">
+                    <div
+                      className={`w-8 h-8 rounded-full border-2 ${index === 0 ? "border-neutral-800 bg-neutral-800" : "border-neutral-400 bg-neutral-400"} flex items-center justify-center mr-3`}
+                    >
+                      {index === 0 && <div className="w-3 h-3 rounded-full bg-white"></div>}
+                    </div>
+                    <span className="text-sm font-semibold text-neutral-500">{item.step}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-neutral-600 text-sm">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Consultant Section */}
+      <section className="relative py-16 md:py-24">
+        <Image
+          src="/placeholder.svg?width=1600&height=700"
+          alt="Two consultants collaborating"
+          layout="fill"
+          objectFit="cover"
+          className="absolute inset-0 z-0"
+        />
+        <div className="absolute inset-0 bg-black/30 z-0"></div>
+        <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center min-h-[400px] md:min-h-[500px]">
+          <button aria-label="Play video" className="mb-8 text-white hover:text-neutral-200">
+            <PlayCircle className="w-20 h-20 md:w-24 md:h-24" />
+          </button>
+          <div className="bg-neutral-800 text-white p-8 md:p-10 text-center max-w-sm ml-auto md:absolute md:bottom-10 md:right-10 rounded-lg">
+            <p className="text-5xl md:text-6xl font-bold mb-2">30+</p>
+            <p className="text-lg">Our talented consultant</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-1">
+              <h2 className="text-3xl md:text-4xl font-bold">Frequently asked question</h2>
+            </div>
+            <div className="md:col-span-2">
+              <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+                {faqData.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-b border-neutral-200">
+                    <AccordionTrigger className="py-6 text-left hover:no-underline group">
+                      <span className="text-lg font-medium group-hover:text-neutral-600 flex-1 pr-4">
+                        {item.question}
+                      </span>
+                      {/* Custom icons for open/closed state */}
+                      <Plus className="w-6 h-6 text-neutral-500 group-data-[state=open]:hidden transition-transform" />
+                      <Minus className="w-6 h-6 text-neutral-500 group-data-[state=closed]:hidden transition-transform" />
+                    </AccordionTrigger>
+                    <AccordionContent className="pt-0 pb-6 text-neutral-600">{item.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <Footer/>
+    </>
+  )
+}

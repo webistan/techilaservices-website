@@ -60,8 +60,20 @@ const config: Config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+			  "brand-blueshade1": "#042343",
+			  "brand-blueshade1-dark": "#042343",
+			  "brand-blueshade1-light": "#042343",
+			  "brand-blue": "#0A2540",
+			  "brand-blue-light": "#1E3A5F", // For input background
+			  "brand-orange": "#F97316",
+			  "brand-gray-link": "#A0AEC0",
+			  "brand-cyan": "#18FFFF", // A vibrant cyan
+			  "brand-terracotta": "#D87A6B", // A muted red/terracotta
+			  "brand-grey": "#F1F6F6", // A vibrant cyan
+			
   		},
+		
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

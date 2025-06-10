@@ -41,7 +41,7 @@ const Hero = () => {
               {/* Main image */}
               <div className="col-span-2 rounded-3xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=300&width=600"
+                  src="https://crowdytheme.com/wp/binox/it-consultancy/wp-content/uploads/sites/3/2024/04/banner-right.webp"
                   alt="Team collaboration"
                   width={600}
                   height={300}
@@ -92,7 +92,7 @@ const Hero = () => {
                 </Card>
                 <div className="w-[100%] relative">
                   {/* Floating profile card */}
-            <div className="absolute -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden">
+            <div className="absolute bg-white -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden">
               <Image
                 src="/placeholder.svg?height=160&width=128"
                 alt="Professional portrait"

@@ -2,44 +2,16 @@ import Image from "next/image"
 import { Play, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/Header/header"
+import AboutHeroSection from "@/components/HomePageSections/AboutHero"
 
-export default function About() {
+export default function AboutPage() {
   return (
     <>
     {/* Header Section */}
     <Header/>
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gray-50 py-20 lg:py-24">
-        <div className="absolute -left-10 top-0 text-[20rem] font-bold text-gray-100 opacity-50">A</div>
-        <div className="container mx-auto px-4">
-          <div className="grid gap-8 max-w-4xl m-auto">
-            <div className="z-10 pt-10">
-              <p className="text-xs uppercase tracking-wider mb-4">SINCE ABOUT US</p>
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-8 text-center">
-                We&apos;re a consultant agency we working globally with-biggest company
-              </h1>
-              <div className="flex justify-center lg:justify-start">
-                <div className="h-12 border-l border-gray-300"></div>
-              </div>
-              <div className="flex justify-center lg:justify-start mt-4">
-                <button className="rounded-full bg-white p-3 shadow-md">
-                  <Play className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute right-0 top-0 h-full flex flex-col justify-between items-center py-10 px-4">
-          <div className="text-xs font-medium tracking-widest transform rotate-90 origin-bottom-left translate-x-6">
-            FOLLOW
-          </div>
-          <div className="flex flex-col gap-4 items-center">
-            <div className="w-1 h-1 rounded-full bg-gray-400"></div>
-            <div className="w-1 h-1 rounded-full bg-gray-400"></div>
-          </div>
-        </div>
-      </section>
+      <AboutHeroSection/>
 
       {/* Experience Section */}
       <section className="py-16 bg-white">
