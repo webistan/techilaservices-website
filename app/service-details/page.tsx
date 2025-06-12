@@ -72,7 +72,7 @@ const processSteps = [
   },
 ]
 
-export default function ServiceDetailPage() {
+export default function ServicesPage() {
   return (
     <>
     <Header/>

@@ -7,36 +7,55 @@ import StatisticsSection from "@/components/HomePageSections/StatisticsSection"
 import CustomerSatisfactionSection from "@/components/HomePageSections/CustomerSatisfactionSection"
 import WorkProcessSection from "@/components/HomePageSections/WorkProcessSection"
 import Footer from "@/components/Footer/footer"
+import { Container } from "@/components/shared/Container"
+import { Section } from "@/components/shared/Section"
 
-export default function Component() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <Header/>
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main>
+        <Hero />
+        
+        <Section>
+          <Container>
+            <PartnersSection />
+          </Container>
+        </Section>
 
-      {/* Hero Section */}
-      <Hero/>
+        <Section className="bg-muted/50">
+          <Container>
+            <AboutSection />
+          </Container>
+        </Section>
 
-      {/* Partners Section */}
-      <PartnersSection/>
+        <Section>
+          <Container>
+            <ServicesSection />
+          </Container>
+        </Section>
 
-      {/* About Section */}
-      <AboutSection/>
+        <Section className="bg-muted/50">
+          <Container>
+            <StatisticsSection />
+          </Container>
+        </Section>
 
-      {/* Services Section */}
-      <ServicesSection/>
+        <Section>
+          <Container>
+            <CustomerSatisfactionSection />
+          </Container>
+        </Section>
 
-      {/* Statistics Section */}
-      <StatisticsSection/>
+        <Section className="bg-muted/50">
+          <Container>
+            <WorkProcessSection />
+          </Container>
+        </Section>
+      </main>
 
-      {/* Customer Satisfaction Section */}
-      <CustomerSatisfactionSection/>
-
-      {/* Work Process Section */}
-      <WorkProcessSection/>
-
-      {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   )
 }
