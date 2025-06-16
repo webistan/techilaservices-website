@@ -1,7 +1,7 @@
 const StatisticsSection = () => {
   return (
     <section className="px-6 py-16 mx-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto">
         {/* Statistics Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight max-w-4xl mx-auto">

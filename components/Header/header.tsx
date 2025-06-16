@@ -26,7 +26,7 @@ const Header = () => {
                     : "bg-background"
             )}
         >
-            <div className="container mx-auto flex items-center justify-between px-4 py-4">
+            <div className="mx-auto flex items-center justify-between px-6 py-6">
                 <Link href="/" className="text-2xl font-bold text-foreground">
                     Techila
                 </Link>

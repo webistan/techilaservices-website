@@ -3,16 +3,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Card, CardContent } from "../ui/card"
 import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
+import MoreAboutButton from "../Buttons/moreAboutButton"
 
 const Hero = () => {
     return (
         <>
         {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 gap-8 px-6 py-16">
+        <div className="grid lg:grid-cols-2 gap-8 px-6 py-2">
           {/* Left Content */}
-          <div className="bg-slate-900 rounded-3xl p-[120px] text-white relative">
-            <div className="absolute top-8 left-8">
+          <div className="bg-slate-900 rounded-[2.5rem] p-[120px] text-white relative">
+            <div className="mt-16">
+            <div className="mb-2">
               <div className="flex items-center space-x-2 text-orange-500">
                 <div className="flex space-x-1">
                   <div className="w-1 h-6 bg-orange-500 rounded"></div>
@@ -22,16 +24,14 @@ const Hero = () => {
                 <span className="text-sm font-medium">IT CONSULTANT</span>
               </div>
             </div>
-
-            <div className="mt-16">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">Trusted tech consultancy it firms</h1>
+              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">Trusted tech consultancy it firms</h1>
               <p className="text-lg text-slate-300 mb-8 max-w-md">
                 We are dedicated to guiding you on your it firm personalized approach.
               </p>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-3 text-lg">
-                More about
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <MoreAboutButton 
+                className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
+                buttonText="More about"
+              />
             </div>
           </div>
 
@@ -52,7 +52,7 @@ const Hero = () => {
               <div className="flex flex-row w-full col-span-2 w-full gap-4">
                 {/* Stats cards */}
                 <Card className="bg-slate-100 border-0 rounded-3xl w-full">
-                  <CardContent className="p-6">
+                  <CardContent className="px-14 py-16">
                     <div className="text-4xl font-bold text-slate-900 mb-2">100+</div>
                     <div className="text-sm text-slate-600 mb-4">
                       Award winning
@@ -64,7 +64,7 @@ const Hero = () => {
                 </Card>
 
                 <Card className="bg-slate-100 border-0 rounded-3xl w-full">
-                  <CardContent className="p-6">
+                  <CardContent className="px-14 py-16">
                     <div className="text-4xl font-bold text-slate-900 mb-2">2.5m</div>
                     <div className="text-sm text-slate-600 mb-4">
                       We consultant customer
@@ -72,19 +72,19 @@ const Hero = () => {
                       word-wide
                     </div>
                     <div className="flex -space-x-2">
-                      <Avatar className="w-8 h-8 border-2 border-white">
+                      <Avatar className="w-12 h-12 border-2 border-white">
                         <AvatarImage src="/placeholder.svg" />
                         <AvatarFallback>U1</AvatarFallback>
                       </Avatar>
-                      <Avatar className="w-8 h-8 border-2 border-white">
+                      <Avatar className="w-12 h-12 border-2 border-white">
                         <AvatarImage src="/placeholder.svg" />
                         <AvatarFallback>U2</AvatarFallback>
                       </Avatar>
-                      <Avatar className="w-8 h-8 border-2 border-white">
+                      <Avatar className="w-12 h-12 border-2 border-white">
                         <AvatarImage src="/placeholder.svg" />
                         <AvatarFallback>U3</AvatarFallback>
                       </Avatar>
-                      <div className="w-8 h-8 bg-slate-900 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-medium">
+                      <div className="w-12 h-12 bg-slate-900 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-medium relative z-2 border-2 border-white">
                         +
                       </div>
                     </div>

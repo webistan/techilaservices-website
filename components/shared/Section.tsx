@@ -17,7 +17,7 @@ export function Section<T extends ElementType = "section">({
   
   return (
     <Component
-      className={cn("py-12 sm:py-16 lg:py-20", className)}
+      className={cn("py-12 sm:py-12 lg:py-12", className)}
       {...props}
     >
       {children}

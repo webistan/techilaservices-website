@@ -3,6 +3,7 @@ import { Play, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/Header/header"
 import AboutHeroSection from "@/components/HomePageSections/AboutHero"
+import Footer from "@/components/Footer/footer"
 
 export default function AboutPage() {
   return (
@@ -31,14 +32,16 @@ export default function AboutPage() {
                 We&apos;ve spent 30+ year&apos;s of experience. we helping business own become better employers.
               </h2>
 
-              <div className="flex items-center gap-6 mb-8">
-                <div className="bg-black text-white text-6xl font-bold p-4 rounded-tl-[2rem] rounded-bl-[2rem]">D</div>
-                <div className="bg-gray-200 rounded-tr-[2rem] rounded-br-[2rem] overflow-hidden">
+              <div className="flex items-center mb-8">
+                <div className="bg-black text-white text-sm font-bold p-4 rounded-tr-full rounded-br-full h-[190px] w-[100px] -mr-10 z-2 relative">
+                  <div className="absolute bottom-[110px] -right-[15px] -rotate-90 w-[150px] uppercase">Who We Are</div>
+                </div>
+                <div className="bg-gray-200 rounded-full overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=100&width=100"
                     alt="Business meeting"
-                    width={100}
-                    height={100}
+                    width={200}
+                    height={200}
                     className="object-cover"
                   />
                 </div>
@@ -140,6 +143,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <Footer/>
     </main>
     </>
   )

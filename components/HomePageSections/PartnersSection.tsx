@@ -2,14 +2,10 @@ import React from 'react';
 
 const PartnersSection = () => {
   return (
-    <section className="px-6 py-16 bg-slate-50">
-      <div className="max-w-7xl mx-auto flex flex-row gap-4">
+    <section className="px-16 py-6 bg-[#001F3F08] rounded-xl">
+      <div className="mx-auto flex flex-row gap-20">
         <div className="text-sm text-slate-600 w-40">
-          Worked with world
-          <br />
-          famous brands and
-          <br />
-          partners
+          Worked with world famous brands and partners
         </div>
         <div className="flex items-center justify-between opacity-40 w-full">
           <div className="text-2xl font-bold text-slate-400">Aloha</div>

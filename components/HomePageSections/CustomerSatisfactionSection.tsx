@@ -5,13 +5,13 @@ import { ArrowRight } from "lucide-react";
 const CustomerSatisfactionSection = () => {
   return (
     <section className="px-6 py-16 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-20 mx-10 mx-auto">
         <div className="bg-slate-100 rounded-3xl p-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
               <div className="text-orange-500 text-sm font-medium mb-4">04 - SUCCESS</div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-8">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-8 max-w-80">
                 Customer satisfaction data
               </h2>
               <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-3">
@@ -74,27 +74,7 @@ const CustomerSatisfactionSection = () => {
           </div>
         </div>
 
-        {/* Video Section */}
-        <div className="mt-16 rounded-3xl overflow-hidden relative">
-          <Image
-            src="/placeholder.svg?height=500&width=1200"
-            alt="Team consultation video"
-            width={1200}
-            height={500}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white"
-            >
-              <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </Button>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
