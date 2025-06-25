@@ -69,7 +69,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
         </div>
 
         {/* Main Content with Sidebar */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Social Share / Stats Sidebar */}
             <aside className="lg:w-20 flex lg:flex-col items-center lg:items-start space-x-4 lg:space-x-0 lg:space-y-6 py-4 lg:sticky lg:top-24 self-start">
