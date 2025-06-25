@@ -71,7 +71,7 @@ const Header = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                         <div className="absolute top-full left-0 hidden group-hover:block bg-background shadow-lg py-2 min-w-[200px] rounded-lg border">
-                            <Link href="/blog" className="block px-4 py-2 hover:bg-muted transition-colors">All Posts</Link>
+                            <Link href="/blogs" className="block px-4 py-2 hover:bg-muted transition-colors">All Posts</Link>
                             <Link href="/blog/technology" className="block px-4 py-2 hover:bg-muted transition-colors">Technology</Link>
                             <Link href="/blog/design" className="block px-4 py-2 hover:bg-muted transition-colors">Design</Link>
                             <Link href="/blog/development" className="block px-4 py-2 hover:bg-muted transition-colors">Development</Link>

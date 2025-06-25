@@ -49,7 +49,7 @@ export default function BlogList() {
         {posts.map((edge: any, index: number) => {
           const post = edge.node;
           return (
-            <Link href={`/blog/${post.slug}`} key={post.id || index} className="group block">
+            <Link href={`/blogs/${post.slug}`} key={post.id || index} className="group block">
               <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 mb-4">
                 <Image
                   src={post.featuredImage?.node?.sourceUrl || "/placeholder.svg"}
