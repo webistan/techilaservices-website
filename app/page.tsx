@@ -10,8 +10,24 @@ import { Section } from "@/components/shared/Section"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Hero from "@/components/HomePageSections/Hero"
+import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
+import { GET_HOME_PAGE_DATA } from "@/lib/wp-queries"
+import { HomePageData } from "@/lib/types/home-page"
 
-export default function Home() {
+
+export default async function Home() {
+
+  // Fetch home page data server-side
+  const { data: homePageData, error } = await fetchWordPressQuery<HomePageData>(GET_HOME_PAGE_DATA);
+
+  if (error) {
+    console.error('Error fetching home page data:', error);
+  }
+
+  const pageData = homePageData?.page;
+
+  console.log("pageDatapageData",pageData)
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

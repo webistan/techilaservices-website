@@ -147,4 +147,39 @@ export const GET_CONTACT_INFO = gql`
       }
     }
   }
-`; 
+`;
+
+export const GET_HOME_PAGE_DATA = gql`
+  query GetHomePageData {
+    page(id: "123", idType: DATABASE_ID) {
+      title
+      homePageHeroSection {
+        heroTitle
+        heroDescription
+        heroImage {
+          node {
+            sourceUrl
+          }
+        }
+      }
+      homePageClientsSection {
+        clientLogos {
+          node {
+            sourceUrl
+          }
+        }
+      }
+      homePageTestimonialsSection {
+        testimonials {
+          name
+          feedback
+          image {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;

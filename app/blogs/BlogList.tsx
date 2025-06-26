@@ -56,10 +56,10 @@ export default function BlogList() {
                   alt={post.title}
                   width={400}
                   height={300}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="flex items-center text-sm text-neutral-500 mb-2">
+              <div className="flex items-center text-xs text-neutral-500 mb-2">
                 <span className="font-medium text-neutral-800 bg-neutral-100 px-2 py-1 rounded-md mr-3">
                   {post.categories?.nodes?.[0]?.name || "Uncategorized"}
                 </span>

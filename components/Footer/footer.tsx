@@ -162,7 +162,7 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <span className="font-serif text-5xl font-extrabold tracking-wider">BINOX</span>
+                <span className="font-serif text-5xl font-extrabold tracking-wider">TECHILA</span>
               </div>
             </div>
           </div>
