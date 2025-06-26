@@ -14,9 +14,7 @@ import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
 import { GET_HOME_PAGE_DATA } from "@/lib/wp-queries"
 import { HomePageData } from "@/lib/types/home-page"
 
-
 export default async function Home() {
-
   // Fetch home page data server-side
   const { data: homePageData, error } = await fetchWordPressQuery<HomePageData>(GET_HOME_PAGE_DATA);
 
@@ -24,62 +22,67 @@ export default async function Home() {
     console.error('Error fetching home page data:', error);
   }
 
-  const pageData = homePageData?.page;
+  const pageData = homePageData?.post;
+  const heroSectionData = pageData?.homePageHeroSection;
+  const clientsData = pageData?.homePageOurClients;
 
-  console.log("pageDatapageData",pageData)
+  console.log("pageDatapageData", pageData)
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main>
-        <Hero />
+        {/* Pass hero data to Hero component */}
+        <Hero data={heroSectionData} />
+        
         <div className="px-6 py-6">
-          <PartnersSection />
-          </div>
+          {/* Pass clients data to PartnersSection */}
+          <PartnersSection data={clientsData} />
+        </div>
+        
         <Section>
-            <AboutSection />
+          <AboutSection />
         </Section>
 
         <Section className="px-4">
-            <ServicesSection />
+          <ServicesSection />
         </Section>
 
         <Section>
-            <StatisticsSection />
+          <StatisticsSection data={heroSectionData?.heroStats} />
         </Section>
 
         <Section>
-            <CustomerSatisfactionSection />
+          <CustomerSatisfactionSection />
         </Section>
+        
         <Section>
-          <>
           {/* Video Section */}
-        <div className="px-6 rounded-[2.5rem] overflow-hidden relative">
-          <Image
-            src="/placeholder.svg?height=500&width=1200"
-            alt="Team consultation video"
-            width={1200}
-            height={500}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white"
-            >
-              <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </Button>
+          <div className="px-6 rounded-[2.5rem] overflow-hidden relative">
+            <Image
+              src="/placeholder.svg?height=500&width=1200"
+              alt="Team consultation video"
+              width={1200}
+              height={500}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white"
+              >
+                <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </Button>
+            </div>
           </div>
-        </div>
-          </>
         </Section>
 
         <Section>
-            <WorkProcessSection />
+          <WorkProcessSection />
         </Section>
       </main>
 

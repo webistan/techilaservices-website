@@ -150,36 +150,33 @@ export const GET_CONTACT_INFO = gql`
 `;
 
 export const GET_HOME_PAGE_DATA = gql`
-  query GetHomePageData {
-    page(id: "123", idType: DATABASE_ID) {
-      title
-      homePageHeroSection {
-        heroTitle
-        heroDescription
-        heroImage {
+  query NewQuery {
+  post(id: "49017", idType: DATABASE_ID) {
+    id
+    homePageOurClients {
+      sectionTitle
+      clientLogo {
+        clientLogoImage {
           node {
-            sourceUrl
+            mediaItemUrl
           }
         }
       }
-      homePageClientsSection {
-        clientLogos {
+    }
+    homePageHeroSection {
+      heroPostLink
+      heroPostShortDesc
+      heroPostTitle
+      heroStats {
+        statsNumber
+        statsText
+        icon {
           node {
-            sourceUrl
-          }
-        }
-      }
-      homePageTestimonialsSection {
-        testimonials {
-          name
-          feedback
-          image {
-            node {
-              sourceUrl
-            }
+            mediaItemUrl
           }
         }
       }
     }
   }
+}
 `;

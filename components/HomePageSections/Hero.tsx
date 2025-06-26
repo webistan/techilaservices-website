@@ -5,32 +5,52 @@ import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
 import MoreAboutButton from "../Buttons/moreAboutButton"
 
-const Hero = () => {
-    return (
-        <>
-        {/* Hero Section */}
+interface HeroProps {
+  data?: {
+    heroPostTitle: string;
+    heroPostShortDesc: string;
+    heroPostLink: string;
+    heroStats: {
+      statsNumber: string;
+      statsText: string;
+      icon: {
+        node: {
+          mediaItemUrl: string;
+        };
+      };
+    }[];
+  };
+}
+
+const Hero = ({ data }: HeroProps) => {
+  return (
+    <>
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-8 px-6 py-2">
           {/* Left Content */}
           <div className="bg-slate-900 rounded-[2.5rem] p-[120px] text-white relative">
             <div className="mt-16">
-            <div className="mb-2">
-              <div className="flex items-center space-x-2 text-orange-500">
-                <div className="flex space-x-1">
-                  <div className="w-1 h-6 bg-orange-500 rounded"></div>
-                  <div className="w-1 h-4 bg-orange-500 rounded mt-1"></div>
-                  <div className="w-1 h-3 bg-orange-500 rounded mt-1.5"></div>
+              <div className="mb-2">
+                <div className="flex items-center space-x-2 text-orange-500">
+                  <div className="flex space-x-1">
+                    <div className="w-1 h-6 bg-orange-500 rounded"></div>
+                    <div className="w-1 h-4 bg-orange-500 rounded mt-1"></div>
+                    <div className="w-1 h-3 bg-orange-500 rounded mt-1.5"></div>
+                  </div>
+                  <span className="text-sm font-medium">IT CONSULTANT</span>
                 </div>
-                <span className="text-sm font-medium">IT CONSULTANT</span>
               </div>
-            </div>
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">Trusted tech consultancy it firms</h1>
+              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                {data?.heroPostTitle || "Your Title Here"}
+              </h1>
               <p className="text-lg text-slate-300 mb-8 max-w-md">
-                We are dedicated to guiding you on your it firm personalized approach.
+                {data?.heroPostShortDesc || "Description within 12 words"}
               </p>
               <MoreAboutButton 
                 className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
                 buttonText="More about"
+                href={data?.heroPostLink}
               />
             </div>
           </div>
@@ -114,8 +134,8 @@ const Hero = () => {
           </div>
         </div>
       </section>
-        </>
-    )
+    </>
+  )
 }
 
-export default Hero;
+export default Hero

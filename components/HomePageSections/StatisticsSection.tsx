@@ -1,69 +1,50 @@
-const StatisticsSection = () => {
-  return (
-    <section className="px-6 py-16 mx-4">
-      <div className="mx-auto">
-        {/* Statistics Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight max-w-4xl mx-auto">
-            We consulted more then 1.2m+ popular companies world-wide
-          </h2>
-        </div>
+import Image from "next/image"
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-          <div>
-            <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
-              30<sup className="text-2xl">+</sup>
+interface StatisticsSectionProps {
+  data?: {
+    statsNumber: string;
+    statsText: string;
+    icon: {
+      node: {
+        mediaItemUrl: string;
+      };
+    };
+  }[];
+}
+
+const StatisticsSection = ({ data }: StatisticsSectionProps) => {
+  return (
+    <section className="px-6 py-16">
+      <div className="mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {data?.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="mb-4">
+                <Image
+                  src={stat.icon.node.mediaItemUrl}
+                  alt={stat.statsText}
+                  width={64}
+                  height={64}
+                  className="mx-auto"
+                />
+              </div>
+              <div className="text-4xl font-bold text-slate-900 mb-2">
+                {stat.statsNumber}
+              </div>
+              <div className="text-slate-600">
+                {stat.statsText}
+              </div>
             </div>
-            <div className="text-sm text-slate-600 uppercase tracking-wide">
-              YEAR
-              <br />
-              EXPERIENCES
+          )) || (
+            // Fallback content if no data
+            <div className="col-span-full text-center text-slate-500">
+              No statistics available
             </div>
-          </div>
-          <div>
-            <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
-              1.2<sup className="text-2xl">m</sup>
-            </div>
-            <div className="text-sm text-slate-600 uppercase tracking-wide">
-              CLIENTS AROUND
-              <br />
-              THE WORLD
-            </div>
-          </div>
-          <div>
-            <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
-              10<sup className="text-2xl">+</sup>
-            </div>
-            <div className="text-sm text-slate-600 uppercase tracking-wide">
-              AWARD
-              <br />
-              WINNING
-            </div>
-          </div>
-          <div>
-            <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
-              3.8<sup className="text-2xl">x</sup>
-            </div>
-            <div className="text-sm text-slate-600 uppercase tracking-wide">
-              ECONOMICAL
-              <br />
-              GROWTH
-            </div>
-          </div>
-          <div>
-            <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
-              70<sup className="text-2xl">+</sup>
-            </div>
-            <div className="text-sm text-slate-600 uppercase tracking-wide">
-              TEAM
-              <br />
-              MEMBERS
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default StatisticsSection; 
+export default StatisticsSection;

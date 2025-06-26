@@ -1,30 +1,26 @@
-// Home page data types
 export interface HomePageData {
-  page: {
-    title: string;
-    homePageHeroSection: {
-      heroTitle: string;
-      heroDescription: string;
-      heroImage: {
-        node: {
-          sourceUrl: string;
-        };
-      };
-    };
-    homePageClientsSection: {
-      clientLogos: {
-        node: {
-          sourceUrl: string;
+  post: {
+    id: string;
+    homePageOurClients: {
+      sectionTitle: string;
+      clientLogo: {
+        clientLogoImage: {
+          node: {
+            mediaItemUrl: string;
+          };
         };
       }[];
     };
-    homePageTestimonialsSection: {
-      testimonials: {
-        name: string;
-        feedback: string;
-        image: {
+    homePageHeroSection: {
+      heroPostLink: string;
+      heroPostShortDesc: string;
+      heroPostTitle: string;
+      heroStats: {
+        statsNumber: string;
+        statsText: string;
+        icon: {
           node: {
-            sourceUrl: string;
+            mediaItemUrl: string;
           };
         };
       }[];
@@ -32,29 +28,40 @@ export interface HomePageData {
   };
 }
 
-// Individual component prop types for better reusability
+// Additional helper types for better type safety
 export interface HeroSectionData {
-  heroTitle: string;
-  heroDescription: string;
-  heroImage: {
+  heroPostLink: string;
+  heroPostShortDesc: string;
+  heroPostTitle: string;
+  heroStats: HeroStat[];
+}
+
+export interface HeroStat {
+  statsNumber: string;
+  statsText: string;
+  icon: {
     node: {
-      sourceUrl: string;
+      mediaItemUrl: string;
     };
   };
+}
+
+export interface ClientsData {
+  sectionTitle: string;
+  clientLogo: ClientLogo[];
 }
 
 export interface ClientLogo {
-  node: {
-    sourceUrl: string;
+  clientLogoImage: {
+    node: {
+      mediaItemUrl: string;
+    };
   };
 }
 
-export interface Testimonial {
-  name: string;
-  feedback: string;
-  image: {
-    node: {
-      sourceUrl: string;
-    };
+// WordPress media item type for reusability
+export interface WordPressMediaItem {
+  node: {
+    mediaItemUrl: string;
   };
 }
