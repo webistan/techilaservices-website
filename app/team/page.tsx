@@ -59,7 +59,7 @@ const teamMembers = [
     linkedinUrl: "#",
   },
   {
-    name: "Samantha",
+    name: "Samantha2",
     role: "Officer",
     imageUrl: "/placeholder.svg?width=400&height=500",
     linkedinUrl: "#",

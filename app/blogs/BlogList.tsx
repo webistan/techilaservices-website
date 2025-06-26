@@ -9,7 +9,7 @@ import { GET_BLOG_POSTS } from "../../lib/wp-queries"
 function BlogCardSkeleton() {
   return (
     <div className="group block animate-pulse">
-      <div className="overflow-hidden rounded-lg shadow-md mb-4 bg-neutral-200 h-64 w-full" />
+      <div className="overflow-hidden rounded-lg shadow-md mb-4 bg-neutral-200 h-44 w-full" />
       <div className="flex items-center text-sm mb-2">
         <span className="bg-neutral-200 h-6 w-20 rounded-md mr-3" />
         <span className="bg-neutral-200 h-6 w-16 rounded-md" />
