@@ -153,16 +153,6 @@ export const GET_HOME_PAGE_DATA = gql`
   query NewQuery {
   post(id: "49017", idType: DATABASE_ID) {
     id
-    homePageOurClients {
-      sectionTitle
-      clientLogo {
-        clientLogoImage {
-          node {
-            mediaItemUrl
-          }
-        }
-      }
-    }
     homePageHeroSection {
       heroPostLink
       heroPostShortDesc
@@ -175,6 +165,55 @@ export const GET_HOME_PAGE_DATA = gql`
             mediaItemUrl
           }
         }
+      }
+    }
+    homePageOurClients {
+      sectionTitle
+      clientLogo {
+        clientLogoImage {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+    
+    homePageOurReachSection {
+      sectionHeading
+      reachSectionStats {
+        reachStats
+        reachTitle
+      }
+    }
+    homePageSuccessSection {
+      sectionTitle
+      successStats {
+        successRating
+        successText
+      }
+    }
+    servicesShowOnHomePage {
+      selectServices {
+        edges {
+          node {
+            slug
+            ... on Page {
+              id
+              title
+            }
+          }
+        }
+      }
+    }
+    homePageAboutUs {
+      aboutUsLink
+      aboutUsTitle
+      sectionExcerpt
+      testimonials {
+        name
+        rating
+        title
+        content
       }
     }
   }

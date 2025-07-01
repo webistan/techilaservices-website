@@ -25,6 +25,10 @@ export default async function Home() {
   const pageData = homePageData?.post;
   const heroSectionData = pageData?.homePageHeroSection;
   const clientsData = pageData?.homePageOurClients;
+  const aboutUsSectionData = pageData?.homePageAboutUs;
+  const reachSectionData = pageData?.homePageOurReachSection;
+  const successSectionData = pageData?.homePageSuccessSection;
+  const servicesSectionData = pageData?.servicesShowOnHomePage;
 
   console.log("pageDatapageData", pageData)
 
@@ -42,7 +46,7 @@ export default async function Home() {
         </div>
         
         <Section>
-          <AboutSection />
+          <AboutSection data={aboutUsSectionData} />
         </Section>
 
         <Section className="px-4">

@@ -25,6 +25,42 @@ export interface HomePageData {
         };
       }[];
     };
+    homePageOurReachSection: {
+      sectionHeading: string;
+      reachSectionStats: {
+        reachStats: string;
+        reachTitle: string;
+      }[];
+    };
+    homePageSuccessSection: {
+      sectionTitle: string;
+      successStats: {
+        successRating: string;
+        successText: string;
+      }[];
+    };
+    servicesShowOnHomePage: {
+      selectServices: {
+        edges: {
+          node: {
+            slug: string;
+            id?: string;
+            title?: string;
+          };
+        }[];
+      };
+    };
+    homePageAboutUs: {
+      aboutUsLink: string;
+      aboutUsTitle: string;
+      sectionExcerpt: string;
+      testimonials: {
+        name: string;
+        rating: string;
+        title: string;
+        content: string;
+      }[];
+    };
   };
 }
 
@@ -57,6 +93,52 @@ export interface ClientLogo {
       mediaItemUrl: string;
     };
   };
+}
+
+export interface OurReachSectionData {
+  sectionHeading: string;
+  reachSectionStats: ReachSectionStat[];
+}
+
+export interface ReachSectionStat {
+  reachStats: string;
+  reachTitle: string;
+}
+
+export interface SuccessSectionData {
+  sectionTitle: string;
+  successStats: SuccessStat[];
+}
+
+export interface SuccessStat {
+  successRating: string;
+  successText: string;
+}
+
+export interface ServicesShowOnHomePageData {
+  selectServices: {
+    edges: {
+      node: {
+        slug: string;
+        id?: string;
+        title?: string;
+      };
+    }[];
+  };
+}
+
+export interface AboutUsSectionData {
+  aboutUsLink: string;
+  aboutUsTitle: string;
+  sectionExcerpt: string;
+  testimonials: Testimonial[];
+}
+
+export interface Testimonial {
+  name: string;
+  rating: string;
+  title: string;
+  content: string;
 }
 
 // WordPress media item type for reusability

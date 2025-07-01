@@ -1,8 +1,6 @@
 import Image from "next/image"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Card, CardContent } from "../ui/card"
-import { Button } from "../ui/button"
-import { ArrowRight } from "lucide-react"
 import MoreAboutButton from "../Buttons/moreAboutButton"
 
 interface HeroProps {
@@ -70,46 +68,30 @@ const Hero = ({ data }: HeroProps) => {
               </div>
 
               <div className="flex flex-row w-full col-span-2 w-full gap-4">
-                {/* Stats cards */}
-                <Card className="bg-slate-100 border-0 rounded-3xl w-full">
-                  <CardContent className="px-14 py-16">
-                    <div className="text-4xl font-bold text-slate-900 mb-2">100+</div>
-                    <div className="text-sm text-slate-600 mb-4">
-                      Award winning
-                      <br />
-                      company
-                    </div>
-                    <div className="w-12 h-8 bg-slate-200 rounded"></div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-slate-100 border-0 rounded-3xl w-full">
-                  <CardContent className="px-14 py-16">
-                    <div className="text-4xl font-bold text-slate-900 mb-2">2.5m</div>
-                    <div className="text-sm text-slate-600 mb-4">
-                      We consultant customer
-                      <br />
-                      word-wide
-                    </div>
-                    <div className="flex -space-x-2">
-                      <Avatar className="w-12 h-12 border-2 border-white">
-                        <AvatarImage src="/placeholder.svg" />
-                        <AvatarFallback>U1</AvatarFallback>
-                      </Avatar>
-                      <Avatar className="w-12 h-12 border-2 border-white">
-                        <AvatarImage src="/placeholder.svg" />
-                        <AvatarFallback>U2</AvatarFallback>
-                      </Avatar>
-                      <Avatar className="w-12 h-12 border-2 border-white">
-                        <AvatarImage src="/placeholder.svg" />
-                        <AvatarFallback>U3</AvatarFallback>
-                      </Avatar>
-                      <div className="w-12 h-12 bg-slate-900 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-medium relative z-2 border-2 border-white">
-                        +
+                {/* Stats cards dynamically rendered from heroStats */}
+                {data?.heroStats?.map((stat, idx) => (
+                  <Card key={idx} className="bg-slate-100 border-0 rounded-3xl w-full">
+                    <CardContent className="px-14 py-16 flex flex-col items-center">
+                      <div className="text-4xl font-bold text-slate-900 mb-2">{stat.statsNumber}</div>
+                      <div className="text-sm text-slate-600 mb-4 text-center whitespace-pre-line">
+                        {stat.statsText}
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      {stat.icon?.node?.mediaItemUrl ? (
+                        <div className="w-12 h-8 flex items-center justify-center">
+                          <Image
+                            src={stat.icon.node.mediaItemUrl}
+                            alt="Stat Icon"
+                            width={48}
+                            height={32}
+                            className="object-contain w-12 h-8"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-12 h-8 bg-slate-200 rounded"></div>
+                      )}
+                    </CardContent>
+                  </Card>
+                ))}
                 <div className="w-[100%] relative">
                   {/* Floating profile card */}
             <div className="absolute bg-white -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden">
