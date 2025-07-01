@@ -11,6 +11,7 @@ export interface HomePageData {
         };
       }[];
     };
+    ourClientHomePage: any;
     homePageHeroSection: {
       heroPostLink: string;
       heroPostShortDesc: string;

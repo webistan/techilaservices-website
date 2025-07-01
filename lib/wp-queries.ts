@@ -167,6 +167,22 @@ export const GET_HOME_PAGE_DATA = gql`
         }
       }
     }
+    ourClientHomePage {
+      homePageClients {
+        nodes {
+          homePageOurClients {
+            sectionTitle
+            clientLogo {
+              clientLogoImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
     homePageOurClients {
       sectionTitle
       clientLogo {

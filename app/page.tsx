@@ -24,13 +24,13 @@ export default async function Home() {
 
   const pageData = homePageData?.post;
   const heroSectionData = pageData?.homePageHeroSection;
-  const clientsData = pageData?.homePageOurClients;
+  const clientsData = pageData?.ourClientHomePage?.homePageClients?.nodes[0]?.homePageOurClients;
   const aboutUsSectionData = pageData?.homePageAboutUs;
   const reachSectionData = pageData?.homePageOurReachSection;
   const successSectionData = pageData?.homePageSuccessSection;
   const servicesSectionData = pageData?.servicesShowOnHomePage;
 
-  console.log("pageDatapageData", pageData)
+  console.log("pageDatapageData", clientsData)
 
   return (
     <div className="min-h-screen bg-background">
