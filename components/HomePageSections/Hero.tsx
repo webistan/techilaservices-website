@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Card, CardContent } from "../ui/card"
 import MoreAboutButton from "../Buttons/moreAboutButton"
 
@@ -45,7 +44,7 @@ const Hero = ({ data }: HeroProps) => {
               <p className="text-lg text-slate-300 mb-8 max-w-md">
                 {data?.heroPostShortDesc || "Description within 12 words"}
               </p>
-              <MoreAboutButton 
+              <MoreAboutButton
                 className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
                 buttonText="More about"
                 href={data?.heroPostLink}
@@ -94,25 +93,25 @@ const Hero = ({ data }: HeroProps) => {
                 ))}
                 <div className="w-[100%] relative">
                   {/* Floating profile card */}
-            <div className="absolute bg-white -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=160&width=128"
-                alt="Professional portrait"
-                width={128}
-                height={160}
-                className="w-full h-full object-cover rounded-3xl"
-              />
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <div className="w-0 h-0 border-l-2 border-r-2 border-b-3 border-transparent border-b-slate-900"></div>
-                </div>
-              </div>
-            </div>
+                  <div className="absolute bg-white -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden">
+                    <Image
+                      src="/placeholder.svg?height=160&width=128"
+                      alt="Professional portrait"
+                      width={128}
+                      height={160}
+                      className="w-full h-full object-cover rounded-3xl"
+                    />
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <div className="w-0 h-0 border-l-2 border-r-2 border-b-3 border-transparent border-b-slate-900"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            
+
           </div>
         </div>
       </section>

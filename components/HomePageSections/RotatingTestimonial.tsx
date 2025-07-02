@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
+// Define a type for a single testimonial
 interface Testimonial {
   name: string;
   rating: string;
@@ -10,9 +11,14 @@ interface Testimonial {
   content: string;
 }
 
+// Define the props interface
+interface RotatingTestimonialProps {
+  testimonials: Testimonial[];
+}
+
 const ANIMATION_DURATION = 400; // ms
 
-const RotatingTestimonial = ({ testimonials }: { testimonials: Testimonial[] }) => {
+const RotatingTestimonial = ({ testimonials }: RotatingTestimonialProps) => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [displayedIndex, setDisplayedIndex] = useState(0);
@@ -43,9 +49,8 @@ const RotatingTestimonial = ({ testimonials }: { testimonials: Testimonial[] }) 
         <div className="flex gap-10 items-start">
           <Quote className="text-slate-300 mb-4 flex-shrink-0" size={84} />
           <div
-            className={`transition-all duration-400 ease-in-out ${
-              animating ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0'
-            }`}
+            className={`transition-all duration-400 ease-in-out ${animating ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0'
+              }`}
             style={{
               transitionProperty: 'opacity, transform',
               willChange: 'opacity, transform',

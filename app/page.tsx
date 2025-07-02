@@ -37,11 +37,9 @@ export default async function Home() {
       <Header />
       
       <main>
-        {/* Pass hero data to Hero component */}
         <Hero data={heroSectionData} />
         
         <div className="px-6 py-6">
-          {/* Pass clients data to PartnersSection */}
           <PartnersSection data={clientsData} />
         </div>
         
@@ -50,7 +48,7 @@ export default async function Home() {
         </Section>
 
         <Section className="px-4">
-          <ServicesSection />
+          <ServicesSection data={servicesSectionData} />
         </Section>
 
         <Section>

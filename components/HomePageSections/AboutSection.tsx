@@ -1,21 +1,22 @@
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
 import MoreAboutButton from "../Buttons/moreAboutButton";
 import RotatingTestimonial from "./RotatingTestimonial";
 
 interface AboutUsSectionData {
-  aboutUsTitle: string;
-  sectionExcerpt: string;
-  testimonials: {
-    name: string;
-    rating: string;
-    title: string;
-    content: string;
-  }[];
-}
+  data?: {
+    aboutUsLink: string;
+    aboutUsTitle: string;
+    sectionExcerpt: string;
+    testimonials: {
+      name: string;
+      rating: string;
+      title: string;
+      content: string;
+    }[];
+  }
+};
 
-const AboutSection = ({ data }: { data: AboutUsSectionData }) => {
+const AboutSection = ({ data }: AboutUsSectionData) => {
   return (
     <section className="px-6 py-16">
       <div className="px-20 mx-10 mx-auto">
@@ -24,7 +25,7 @@ const AboutSection = ({ data }: { data: AboutUsSectionData }) => {
           <div>
             <div className="text-orange-500 text-sm font-medium mb-4">01 - ABOUT US</div>
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-              {data.aboutUsTitle}
+              {data?.aboutUsTitle}
             </h2>
           </div>
 
@@ -34,14 +35,14 @@ const AboutSection = ({ data }: { data: AboutUsSectionData }) => {
               30<sup className="text-3xl">+</sup>
             </div>
             <p className="text-slate-600 mb-8">
-              {data.sectionExcerpt}
+              {data?.sectionExcerpt}
             </p>
-            <MoreAboutButton 
+            <MoreAboutButton
               className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-8"
               buttonText="More About"
             />
             {/* Testimonial */}
-            <RotatingTestimonial testimonials={data.testimonials} />
+            <RotatingTestimonial testimonials={data?.testimonials ?? []} />
           </div>
 
           {/* Right Content */}
