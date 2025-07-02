@@ -19,6 +19,8 @@ interface HeaderClientProps {
 
 const HeaderClient = ({ menuItems }: HeaderClientProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredLevel2, setHoveredLevel2] = useState<string | null>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,33 +48,63 @@ const HeaderClient = ({ menuItems }: HeaderClientProps) => {
             menuItems.map((node: any) => {
               const hasChildren = node.childItems && node.childItems.edges.length > 0;
               return hasChildren ? (
-                <div key={node.id} className="flex items-center space-x-1 group relative">
-                  <span className="text-foreground/80 hover:text-foreground transition-colors cursor-pointer">{node.label}</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                  <div className="absolute top-full left-0 hidden group-hover:block bg-background shadow-lg py-2 min-w-[200px] rounded-lg border z-50">
-                    {node.childItems.edges.map(({ node: child }: any) => {
-                      const hasGrandChildren = child.childItems && child.childItems.edges.length > 0;
-                      return hasGrandChildren ? (
-                        <div key={child.id} className="relative group/submenu">
-                          <span className="block px-4 py-2 hover:bg-muted transition-colors cursor-pointer flex items-center justify-between">
-                            {child.label}
-                            <svg className="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </span>
-                          <div className="absolute top-0 left-full hidden group-hover/submenu:block bg-background shadow-lg py-2 min-w-[200px] rounded-lg border z-50">
-                            {child.childItems.edges.map(({ node: grandchild }: any) => (
-                              <Link key={grandchild.id} href="#" className="block px-4 py-2 hover:bg-muted transition-colors">{grandchild.label}</Link>
-                            ))}
+                <div key={node.id} className="relative group"
+                  onMouseEnter={() => setOpenMenu(node.id)}
+                  onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
+                >
+                  <span className="text-foreground/80 hover:text-foreground transition-colors cursor-pointer flex items-center">
+                    {node.label}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                  {/* Mega Menu Panel */}
+                  {openMenu === node.id && (
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-2 flex bg-background shadow-2xl py-6 px-8 min-w-[600px] rounded-lg border z-50 transition-all duration-200 flex-row gap-8"
+                      onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
+                    >
+                      {/* Level 2 List (Left Column) */}
+                      <div className="flex flex-col min-w-[200px] border-r border-muted/30 pr-6">
+                        {node.childItems.edges.map(({ node: child }: any) => (
+                          <div
+                            key={child.id}
+                            className={cn(
+                              "py-2 px-3 cursor-pointer rounded hover:bg-muted/20 font-semibold text-foreground/90 transition-colors",
+                              hoveredLevel2 === child.id && "bg-muted/30"
+                            )}
+                            onMouseEnter={() => setHoveredLevel2(child.id)}
+                          >
+                            <Link href="#" className="block w-full h-full">
+                              {child.label}
+                            </Link>
                           </div>
-                        </div>
-                      ) : (
-                        <Link key={child.id} href="#" className="block px-4 py-2 hover:bg-muted transition-colors">{child.label}</Link>
-                      );
-                    })}
-                  </div>
+                        ))}
+                      </div>
+                      {/* Level 3 List (Right Column) */}
+                      <div className="flex flex-col min-w-[200px] pl-6">
+                        {node.childItems.edges.map(({ node: child }: any) => {
+                          const hasGrandChildren = child.childItems && child.childItems.edges.length > 0;
+                          if (hoveredLevel2 === child.id && hasGrandChildren) {
+                            return (
+                              <div key={child.id}>
+                                {child.childItems.edges.map(({ node: grandchild }: any) => (
+                                  <Link
+                                    key={grandchild.id}
+                                    href="#"
+                                    className="block text-foreground/70 hover:text-foreground text-sm py-2 px-3 rounded transition-colors hover:bg-muted/20"
+                                  >
+                                    {grandchild.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            );
+                          }
+                          return null;
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <Link key={node.id} href="#" className="text-foreground/80 hover:text-foreground transition-colors">
