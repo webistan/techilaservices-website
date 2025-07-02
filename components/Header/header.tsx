@@ -4,7 +4,16 @@ import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query";
 
 const Header = async () => {
   const { data } = await fetchWordPressQuery(GET_MENU_ITEMS, { parentId: "0" });
-  const menuItems = data?.menuItems?.edges?.map((edge: any) => edge.node) || [];
+  const mapMenuItem = (node: any): any => ({
+    id: node.id,
+    label: node.label,
+    url: node.url,
+    image: node.image,
+    childItems: node.childItems ? {
+      edges: node.childItems.edges.map((edge: any) => ({ node: mapMenuItem(edge.node) }))
+    } : undefined,
+  });
+  const menuItems = data?.menuItems?.edges?.map((edge: any) => mapMenuItem(edge.node)) || [];
 
   return <HeaderClient menuItems={menuItems} />;
 };

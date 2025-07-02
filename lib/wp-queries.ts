@@ -248,6 +248,14 @@ export const GET_MENU_ITEMS = gql`
               node {
                 id
                 label
+                childItems {
+                  edges {
+                    node {
+                      id
+                      label
+                    }
+                  }
+                }
               }
             }
           }

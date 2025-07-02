@@ -52,9 +52,26 @@ const HeaderClient = ({ menuItems }: HeaderClientProps) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                   <div className="absolute top-full left-0 hidden group-hover:block bg-background shadow-lg py-2 min-w-[200px] rounded-lg border z-50">
-                    {node.childItems.edges.map(({ node: child }: any) => (
-                      <Link key={child.id} href="#" className="block px-4 py-2 hover:bg-muted transition-colors">{child.label}</Link>
-                    ))}
+                    {node.childItems.edges.map(({ node: child }: any) => {
+                      const hasGrandChildren = child.childItems && child.childItems.edges.length > 0;
+                      return hasGrandChildren ? (
+                        <div key={child.id} className="relative group/submenu">
+                          <span className="block px-4 py-2 hover:bg-muted transition-colors cursor-pointer flex items-center justify-between">
+                            {child.label}
+                            <svg className="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </span>
+                          <div className="absolute top-0 left-full hidden group-hover/submenu:block bg-background shadow-lg py-2 min-w-[200px] rounded-lg border z-50">
+                            {child.childItems.edges.map(({ node: grandchild }: any) => (
+                              <Link key={grandchild.id} href="#" className="block px-4 py-2 hover:bg-muted transition-colors">{grandchild.label}</Link>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <Link key={child.id} href="#" className="block px-4 py-2 hover:bg-muted transition-colors">{child.label}</Link>
+                      );
+                    })}
                   </div>
                 </div>
               ) : (
