@@ -14,7 +14,7 @@ export const GET_BLOG_POSTS = gql`
       edges {
         cursor
         node {
-          id
+          id  
           title
           excerpt
           date
@@ -235,3 +235,25 @@ export const GET_HOME_PAGE_DATA = gql`
   }
 }
 `;
+
+export const GET_MENU_ITEMS = gql`
+  query GetMenuItems($parentId: ID!) {
+    menuItems(where: {parentId: $parentId}) {
+      edges {
+        node {
+          id
+          label
+          childItems {
+            edges {
+              node {
+                id
+                label
+              }
+            }
+          }
+        }
+      }
+    } 
+  }
+`;
+
