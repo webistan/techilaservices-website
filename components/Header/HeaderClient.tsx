@@ -61,7 +61,7 @@ const HeaderClient = ({ menuItems }: HeaderClientProps) => {
                   {/* Mega Menu Panel */}
                   {openMenu === node.id && (
                     <div
-                      className="absolute left-1/2 -translate-x-1/2 top-full mt-2 flex bg-background shadow-2xl py-6 px-8 min-w-[600px] rounded-lg border z-50 transition-all duration-200 flex-row gap-8"
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-2 flex bg-background shadow-2xl py-6 px-8 min-w-[1200px] rounded-lg border z-50 transition-all duration-200 flex-row gap-8"
                       onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
                     >
                       {/* Level 2 List (Left Column) */}
@@ -82,12 +82,12 @@ const HeaderClient = ({ menuItems }: HeaderClientProps) => {
                         ))}
                       </div>
                       {/* Level 3 List (Right Column) */}
-                      <div className="flex flex-col min-w-[200px] pl-6">
+                      <div className="min-w-[400px] pl-6">
                         {node.childItems.edges.map(({ node: child }: any) => {
                           const hasGrandChildren = child.childItems && child.childItems.edges.length > 0;
                           if (hoveredLevel2 === child.id && hasGrandChildren) {
                             return (
-                              <div key={child.id}>
+                              <div key={child.id} className="grid grid-cols-3 gap-2">
                                 {child.childItems.edges.map(({ node: grandchild }: any) => (
                                   <Link
                                     key={grandchild.id}
