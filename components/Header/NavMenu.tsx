@@ -34,7 +34,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
         menuItems.map((node: any) => {
           const hasChildren = node.childItems && node.childItems.edges.length > 0;
           return hasChildren ? (
-            <div key={node.id} className="relative group"
+            <div
+              key={node.id}
+              className="relative group"
               onMouseEnter={() => setOpenMenu(node.id)}
               onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
             >
@@ -48,7 +50,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
               {openMenu === node.id && (
                 <div
                   className="fixed mt-3 left-1/2 -translate-x-1/2 top-10 w-full max-w-[1366px] z-50 transition-all duration-200 animate-fadeIn pt-6"
-                  onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
                 >
                   <div className="flex bg-white shadow-2xl rounded-2xl border border-muted/20 flex-row gap-10">
                   {/* Left Sidebar (Level 2) */}
