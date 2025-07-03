@@ -63,26 +63,6 @@ export default async function Home() {
         <Section>
           {/* Video Section */}
           <VideoPlayer videoSrc="https://www.youtube.com/watch?v=zggbwYu1tdw" title="main video" />
-          {/* <div className="px-6 rounded-[2.5rem] overflow-hidden relative">
-            <Image
-              src="/placeholder.svg?height=500&width=1200"
-              alt="Team consultation video"
-              width={1200}
-              height={500}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white"
-              >
-                <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </Button>
-            </div>
-          </div> */}
         </Section>
 
         <Section>
