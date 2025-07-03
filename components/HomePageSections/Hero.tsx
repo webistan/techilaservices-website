@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { Card, CardContent } from "../ui/card"
 import MoreAboutButton from "../Buttons/moreAboutButton"
+import React from "react"
+import ProfileCard from "./ProfileCard"
 
 interface HeroProps {
   data?: {
@@ -20,6 +22,7 @@ interface HeroProps {
 }
 
 const Hero = ({ data }: HeroProps) => {
+
   return (
     <>
       {/* Hero Section */}
@@ -93,19 +96,11 @@ const Hero = ({ data }: HeroProps) => {
                 ))}
                 <div className="w-[100%] relative">
                   {/* Floating profile card */}
-                  <div className="absolute bg-white -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden">
-                    <Image
-                      src="/placeholder.svg?height=160&width=128"
-                      alt="Professional portrait"
-                      width={128}
-                      height={160}
-                      className="w-full h-full object-cover rounded-3xl"
-                    />
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                        <div className="w-0 h-0 border-l-2 border-r-2 border-b-3 border-transparent border-b-slate-900"></div>
-                      </div>
-                    </div>
+                  <div
+        className="absolute bg-white -bottom-5 right-0 w-[100%] h-[420px] border-[20px] border-white rounded-3xl overflow-hidden cursor-pointer shadow-lg z-10"
+        
+      >
+                  <ProfileCard videoSrc="https://www.youtube.com/watch?v=zggbwYu1tdw" title="Professional Introduction" />
                   </div>
                 </div>
               </div>
