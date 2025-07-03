@@ -18,8 +18,8 @@ interface AboutUsSectionData {
 
 const AboutSection = ({ data }: AboutUsSectionData) => {
   return (
-    <section className="px-6 py-16">
-      <div className="px-20 mx-10 mx-auto">
+    <section className="px-6 md:py-16">
+      <div className="md:px-20 mx-10 mx-auto">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Left Content */}
           <div>

@@ -29,8 +29,8 @@ const Hero = ({ data }: HeroProps) => {
       <section className="relative overflow-hidden">
         <div className="grid lg:grid-cols-2 gap-8 px-6 py-2">
           {/* Left Content */}
-          <div className="bg-slate-900 rounded-[2.5rem] p-[120px] text-white relative">
-            <div className="mt-16">
+          <div className="bg-slate-900 rounded-[2.5rem] p-10 md:p-[120px] text-white relative">
+            <div className="md:mt-16">
               <div className="mb-2">
                 <div className="flex items-center space-x-2 text-orange-500">
                   <div className="flex space-x-1">
@@ -41,10 +41,10 @@ const Hero = ({ data }: HeroProps) => {
                   <span className="text-sm font-medium">IT CONSULTANT</span>
                 </div>
               </div>
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6">
                 {data?.heroPostTitle || "Your Title Here"}
               </h1>
-              <p className="text-lg text-slate-300 mb-8 max-w-md">
+              <p className="text-sm md:text-lg text-slate-300 mb-8 max-w-md">
                 {data?.heroPostShortDesc || "Description within 12 words"}
               </p>
               <MoreAboutButton

@@ -46,8 +46,8 @@ const RotatingTestimonial = ({ testimonials }: RotatingTestimonialProps) => {
   return (
     <Card className="bg-white border-0 border-t shadow-none rounded-none p-6 mt-8">
       <CardContent className="p-0">
-        <div className="flex gap-10 items-start">
-          <Quote className="text-slate-300 mb-4 flex-shrink-0" size={84} />
+        <div className="flex gap-5 md:gap-10 items-start">
+          <Quote className="text-slate-300 mb-4 flex-shrink-0 w-[23px] md:w-auto" size={84} />
           <div
             className={`transition-all duration-400 ease-in-out ${animating ? 'opacity-0 translate-x-8' : 'opacity-100 translate-x-0'
               }`}
