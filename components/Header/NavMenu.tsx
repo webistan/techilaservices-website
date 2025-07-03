@@ -156,10 +156,14 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                 {node.label}
               </Link>
             );
+            
           })
         ) : (
           <span className="text-foreground/60">No menu items</span>
         )}
+        <Link href="/blogs" className="text-foreground/80 hover:text-[#F97316] transition-colors">
+                Blogs
+      </Link>
       </nav>
 
       {/* Mobile Menu Drawer */}

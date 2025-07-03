@@ -20,17 +20,23 @@ const AboutSection = ({ data }: AboutUsSectionData) => {
   return (
     <section className="px-6 md:py-16">
       <div className="md:px-20 mx-10 mx-auto">
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Content */}
-          <div>
+          {/* <div>
             <div className="text-orange-500 text-sm font-medium mb-4">01 - ABOUT US</div>
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
               {data?.aboutUsTitle}
             </h2>
-          </div>
+          </div> */}
 
           {/* Center Content */}
           <div className="text-left">
+            <div className="mb-4">
+              <div className="text-orange-500 text-sm font-medium mb-4">01 - ABOUT US</div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+                {data?.aboutUsTitle}
+              </h2>
+            </div>
             <div className="text-6xl lg:text-7xl font-bold text-slate-900 mb-4">
               30<sup className="text-3xl">+</sup>
             </div>
@@ -49,7 +55,7 @@ const AboutSection = ({ data }: AboutUsSectionData) => {
           <div className="relative">
             <div className="rounded-3xl overflow-hidden mb-8">
               <Image
-                src="/placeholder.svg?height=400&width=300"
+                src="https://cdn-ilbnnjf.nitrocdn.com/rAUNdQIoztYuMIpzgzyHqZcuqcpgxgVi/assets/images/optimized/rev-1eaf327/techilaservices.com/wp-content/uploads/2018/05/283-pai4685-jj-id-392158-jpeg1-1000x852.jpg"
                 alt="Professional working"
                 width={300}
                 height={400}
