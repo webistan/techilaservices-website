@@ -2,7 +2,18 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-const CustomerSatisfactionSection = () => {
+interface CustomerSatisfactionProps {
+  data?: {
+    sectionTitle: string;
+      successStats: {
+        successRating: string;
+        successText: string;
+      }[];
+  };
+}
+
+const CustomerSatisfactionSection = ({ data }: CustomerSatisfactionProps) => {
+  console.log("CustomerSatisfactionProps",data)
   return (
     <section className="px-6 py-16 bg-white">
       <div className="px-20 mx-10 mx-auto">
@@ -12,7 +23,7 @@ const CustomerSatisfactionSection = () => {
             <div>
               <div className="text-orange-500 text-sm font-medium mb-4">04 - SUCCESS</div>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-8 max-w-80">
-                Customer satisfaction data
+                {data?.sectionTitle}
               </h2>
               <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-3">
                 Work with us
@@ -40,35 +51,26 @@ const CustomerSatisfactionSection = () => {
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-slate-900">84%</div>
+                      <div className="text-2xl font-bold text-slate-900">{data?.successStats?.[0]?.successRating}</div>
                     </div>
                   </div>
                 </div>
                 <div className="text-center mt-4 space-y-1 text-sm">
-                  <div>10%</div>
-                  <div>4%</div>
-                  <div>1%</div>
+                  {data?.successStats?.slice(1).map((stat, idx) => (
+                    <div key={idx}>{stat.successRating}</div>
+                  ))}
                 </div>
               </div>
 
               {/* Legend */}
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-4 h-4 bg-slate-900 rounded"></div>
-                  <span className="text-sm text-slate-600">84% Client Very satisfied</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-4 h-4 bg-slate-400 rounded"></div>
-                  <span className="text-sm text-slate-600">10% Client Satisfied</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-4 h-4 bg-slate-300 rounded"></div>
-                  <span className="text-sm text-slate-600">4% Neutral</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-4 h-4 bg-slate-200 rounded"></div>
-                  <span className="text-sm text-slate-600">1% Somewhat dissatisfied</span>
-                </div>
+                {data?.successStats?.map((stat, idx) => (
+                  <div key={idx} className="flex items-center space-x-3">
+                    {/* You can customize the color/indicator as needed */}
+                    <div className="w-4 h-4 bg-slate-900 rounded"></div>
+                    <span className="text-sm text-slate-600">{stat.successRating} {stat.successText}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

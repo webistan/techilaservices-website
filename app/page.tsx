@@ -56,7 +56,7 @@ export default async function Home() {
         </Section>
 
         <Section>
-          <CustomerSatisfactionSection />
+          <CustomerSatisfactionSection data={successSectionData} />
         </Section>
         
         <Section>
