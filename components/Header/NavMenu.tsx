@@ -38,7 +38,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
               onMouseEnter={() => setOpenMenu(node.id)}
               onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
             >
-              <span className="text-foreground/90 hover:text-primary transition-colors cursor-pointer flex items-center font-medium text-base gap-1">
+              <span className="text-foreground/90 hover:text-[#F97316] transition-colors cursor-pointer flex items-center font-medium text-base gap-1">
                 {node.label}
                 <svg className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -58,14 +58,18 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                       <div
                         key={level2.id}
                         className={cn(
-                          "flex items-start gap-3 p-4  cursor-pointer transition-all border border-transparent pl-10",
-                          hoveredLevel2 === level2.id ? "bg-background shadow-md border-muted/20" : "hover:bg-muted/10"
+                          "flex items-start gap-3 p-4  cursor-pointer transition-all border border-transparent pl-10 hover:text-[#F97316]",
+                          hoveredLevel2 === level2.id
+                            ? "bg-background shadow-md border-muted/20 text-[#F97316]"
+                            : "hover:bg-muted/10 hover:text-[#F97316]"
                         )}
                         onMouseEnter={() => setHoveredLevel2(level2.id)}
                       >
                         {/* Optionally add an icon here if available */}
                         <div>
-                          <div className="font-semibold text-sm text-foreground">{level2.label}</div>
+                          <div className="font-semibold text-sm text-foreground hover:text-[#F97316]">
+                            {level2.label}
+                          </div>
                           {/* If you have a description field, show it here */}
                         </div>
                       </div>
@@ -84,9 +88,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                         const activeLevel2 = node.childItems.edges.find(({ node: l2 }: { node: MenuItem }) => l2.id === hoveredLevel2) || node.childItems.edges[0];
                         return activeLevel2 && activeLevel2.node.childItems && activeLevel2.node.childItems.edges.length > 0 ? (
                           activeLevel2.node.childItems.edges.map(({ node: level3 }: { node: MenuItem }) => (
-                            <div key={level3.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/10 transition-colors cursor-pointer">
+                            <div key={level3.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/10 hover:text-[#F97316] transition-colors cursor-pointer">
                               {/* Optionally add an icon here if available */}
-                              <div className="font-medium text-foreground text-sm flex items-center gap-2">
+                              <div className="font-medium text-foreground text-sm flex items-center gap-2 hover:text-[#F97316]">
                                 {level3.label}
                               </div>
                             </div>
@@ -117,7 +121,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                       <div className="font-semibold text-base mb-2">Learn more about our features</div>
                       <ul className="space-y-2">
                         {mockFeatureLinks.map((item) => (
-                          <li key={item.label} className="flex items-center gap-2 text-sm text-foreground/80 hover:text-primary cursor-pointer">
+                          <li key={item.label} className="flex items-center gap-2 text-sm text-foreground/80 hover:text-[#F97316] cursor-pointer">
                             {item.icon}
                             {item.label}
                           </li>
@@ -130,7 +134,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
               )}
             </div>
           ) : (
-            <Link key={node.id} href="#" className="text-foreground/80 hover:text-foreground transition-colors">
+            <Link key={node.id} href="#" className="text-foreground/80 hover:text-[#F97316] transition-colors">
               {node.label}
             </Link>
           );
