@@ -13,6 +13,7 @@ import Hero from "@/components/HomePageSections/Hero"
 import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
 import { GET_HOME_PAGE_DATA } from "@/lib/wp-queries"
 import { HomePageData } from "@/lib/types/home-page"
+import VideoPlayer from "@/components/ui/VideoPlayer"
 
 export default async function Home() {
   // Fetch home page data server-side
@@ -52,7 +53,7 @@ export default async function Home() {
         </Section>
 
         <Section>
-          <StatisticsSection data={heroSectionData?.heroStats} />
+          <StatisticsSection data={reachSectionData} />
         </Section>
 
         <Section>
@@ -61,7 +62,8 @@ export default async function Home() {
         
         <Section>
           {/* Video Section */}
-          <div className="px-6 rounded-[2.5rem] overflow-hidden relative">
+          <VideoPlayer videoSrc="https://www.youtube.com/watch?v=zggbwYu1tdw" title="main video" />
+          {/* <div className="px-6 rounded-[2.5rem] overflow-hidden relative">
             <Image
               src="/placeholder.svg?height=500&width=1200"
               alt="Team consultation video"
@@ -80,7 +82,7 @@ export default async function Home() {
                 </svg>
               </Button>
             </div>
-          </div>
+          </div> */}
         </Section>
 
         <Section>
