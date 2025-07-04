@@ -31,8 +31,8 @@ export default async function Home() {
   const successSectionData = pageData?.homePageSuccessSection;
   const servicesSectionData = pageData?.servicesShowOnHomePage;
 
-  console.log("pageDatapageData", clientsData)
-
+  const processSectionData = pageData?.homePageWorkProcess;
+ 
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -66,7 +66,7 @@ export default async function Home() {
         </Section>
 
         <Section>
-          <WorkProcessSection />
+          <WorkProcessSection data={processSectionData} />
         </Section>
       </main>
 

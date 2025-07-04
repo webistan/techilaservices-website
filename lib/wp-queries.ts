@@ -167,6 +167,16 @@ export const GET_HOME_PAGE_DATA = gql`
         }
       }
     }
+  homePageWorkProcess {
+          sectionHeading
+          processLink
+          processDetails {
+            fieldGroupName
+            proccessTitle
+            processExcerpt
+          }
+          
+        }
     ourClientHomePage {
       homePageClients {
         nodes {
