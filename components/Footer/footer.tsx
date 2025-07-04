@@ -39,11 +39,14 @@ export default function Footer() {
         {/* "GO UP" Button - Positioned to bridge sections */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="absolute top-1/2 left-full transform -translate-x-1/2 -translate-y-1/2 z-10 bg-brand-blue text-white px-2 py-8 rounded-full flex flex-col items-center space-y-2 hidden lg:flex border-r-[1px] border-[rgba(255,255,255,0.2)]"
+          className="absolute top-1/2 left-full transform -translate-x-1/2 -translate-y-1/2 z-10 bg-brand-blue text-white px-2 py-8 rounded-full hidden lg:flex border-r-[1px] border-[rgba(255,255,255,0.2)]"
           aria-label="Go Up"
         >
+          <div className="flex flex-col gap-5 items-center">
           <span className="transform -rotate-90 whitespace-nowrap text-sm tracking-wider">GO UP</span>
           <ArrowUp className="w-5 h-5" />
+          </div>
+          
         </button>
         {/* Mobile "GO UP" Button - shown at the bottom of purple section on mobile */}
         <button

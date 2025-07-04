@@ -55,11 +55,20 @@ export interface HomePageData {
       aboutUsLink: string;
       aboutUsTitle: string;
       sectionExcerpt: string;
-      testimonials: {
-        name: string;
-        rating: string;
-        title: string;
-        content: string;
+      selectTestimonialPost: {
+        edges: {
+          node: {
+            id: string;
+            ourClientTestimonials: {
+              testimonials: {
+                authorName: string;
+                designation: string;
+                rating: string;
+                testimonial: string;
+              }
+            }
+          }
+        }
       }[];
     };
   };

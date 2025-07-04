@@ -7,11 +7,20 @@ interface AboutUsSectionData {
     aboutUsLink: string;
     aboutUsTitle: string;
     sectionExcerpt: string;
-    testimonials: {
-      name: string;
-      rating: string;
-      title: string;
-      content: string;
+    selectTestimonialPost: {
+      edges: {
+        node: {
+          id: string;
+          ourClientTestimonials: {
+            testimonials: {
+              authorName: string;
+              designation: string;
+              rating: string;
+              testimonial: string;
+            }
+          }
+        }
+      }
     }[];
   }
 };
@@ -48,7 +57,7 @@ const AboutSection = ({ data }: AboutUsSectionData) => {
               buttonText="More About"
             />
             {/* Testimonial */}
-            <RotatingTestimonial testimonials={data?.testimonials ?? []} />
+            <RotatingTestimonial testimonialPosts={data?.selectTestimonialPost ?? []} />
           </div>
 
           {/* Right Content */}

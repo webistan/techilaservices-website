@@ -225,11 +225,20 @@ export const GET_HOME_PAGE_DATA = gql`
       aboutUsLink
       aboutUsTitle
       sectionExcerpt
-      testimonials {
-        name
-        rating
-        title
-        content
+      selectTestimonialPost {
+        edges {
+          node {
+            id
+            ourClientTestimonials {
+              testimonials {
+                authorName
+                designation
+                rating
+                testimonial
+              }
+            }
+          }
+        }
       }
     }
   }
