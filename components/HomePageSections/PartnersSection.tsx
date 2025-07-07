@@ -55,7 +55,7 @@ const PartnersSection = ({ data }: PartnersSectionProps) => {
         <div className="relative w-full overflow-x-hidden">
           <div
             ref={scrollRef}
-            className="flex items-center gap-10"
+            className="flex items-center gap-10 overflow-y-hidden overflow-x-hidden"
             style={{
               transform: `translateX(-${scroll}px)`,
               transition: 'transform 0s linear',
@@ -70,8 +70,9 @@ const PartnersSection = ({ data }: PartnersSectionProps) => {
                     src={client.clientLogoImage.node.mediaItemUrl}
                     alt={`Client ${index + 1}`}
                     width={120}
-                    height={60}
+                    height={50}
                     className="object-contain"
+                    style={{ transform: `rotate(-45deg)` }}
                   />
                 </div>
               ))

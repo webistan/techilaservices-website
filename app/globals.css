@@ -152,3 +152,8 @@ body {
   animation: none;
   transition: transform 1.5s cubic-bezier(0.4,0,0.2,1), order 1.5s cubic-bezier(0.4,0,0.2,1);
 }
+
+.logo-straighten {
+  transform: rotate(-10deg);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
