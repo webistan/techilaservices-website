@@ -1,8 +1,10 @@
+"use client"
 import Image from "next/image"
 import { Card, CardContent } from "../ui/card"
 import MoreAboutButton from "../Buttons/moreAboutButton"
-import React from "react"
+import React, { useEffect, useState } from 'react'
 import ProfileCard from "./ProfileCard"
+import AnimatedCounter from '../ui/AnimatedCounter'
 
 interface HeroProps {
   data?: {
@@ -74,7 +76,9 @@ const Hero = ({ data }: HeroProps) => {
                 {data?.heroStats?.map((stat, idx) => (
                   <Card key={idx} className="bg-slate-100 border-0 rounded-3xl w-full">
                     <CardContent className="px-14 py-16 flex flex-col items-center">
-                      <div className="text-4xl font-bold text-slate-900 mb-2">{stat.statsNumber}</div>
+                      <div className="text-4xl font-bold text-slate-900 mb-2">
+                        <AnimatedCounter value={stat.statsNumber} />
+                      </div>
                       <div className="text-sm text-slate-600 mb-4 text-center whitespace-pre-line">
                         {stat.statsText}
                       </div>
