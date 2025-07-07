@@ -1,5 +1,5 @@
 "use client"
-
+import AnimatedCounter from '../ui/AnimatedCounter'
 import { ArrowDown, Twitter, Dribbble, Instagram } from "lucide-react"
 import Link from "next/link"
 

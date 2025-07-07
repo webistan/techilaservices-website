@@ -1,6 +1,9 @@
+"use client"
 import Image from "next/image";
 import MoreAboutButton from "../Buttons/moreAboutButton";
 import RotatingTestimonial from "./RotatingTestimonial";
+import AnimatedCounter from '../ui/AnimatedCounter'
+import React, { useRef, useEffect, useState } from "react";
 
 interface AboutUsSectionData {
   data?: {
@@ -26,6 +29,24 @@ interface AboutUsSectionData {
 };
 
 const AboutSection = ({ data }: AboutUsSectionData) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !ref.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="px-6 md:py-16">
       <div className="md:px-20 mx-10 mx-auto">
@@ -46,8 +67,11 @@ const AboutSection = ({ data }: AboutUsSectionData) => {
                 {data?.aboutUsTitle}
               </h2>
             </div>
-            <div className="text-6xl lg:text-7xl font-bold text-slate-900 mb-4">
-              30<sup className="text-3xl">+</sup>
+            <div ref={ref}>
+              <div className="text-6xl lg:text-7xl font-bold text-slate-900 mb-4">
+                <AnimatedCounter value={30} start={inView} />
+                <sup className="text-3xl"></sup>
+              </div>
             </div>
             <p className="text-slate-600 mb-8">
               {data?.sectionExcerpt}
