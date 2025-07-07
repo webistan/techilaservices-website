@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { Button } from "../ui/button"
 import Link from "next/link"
 
@@ -11,12 +11,14 @@ interface MoreAboutButtonProps {
 const MoreAboutButton = ({ className, buttonText = "More About", href }: MoreAboutButtonProps) => {
     const buttonContent = (
         <>
-            <Button className={`bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-8 ${className || ''}`}>
-                {buttonText}
-            </Button>
-            <Button className={`bg-slate-900 hover:bg-slate-800 text-white rounded-full relative top-0.5 ${className || ''} px-6 py-8`}>
-                <ArrowRight className="w-5 h-5" />
-            </Button>
+            <div className="button-swap-container">
+                <Button className={`button-swap-1 bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-8 ${className || ''}`}>
+                    {buttonText}
+                </Button>
+                <Button className={`button-swap-2 bg-slate-900 hover:bg-slate-800 text-white rounded-full relative top-0.5 ${className || ''} px-6 py-8`}>
+                    <ArrowUpRight className="w-5 h-5" />
+                </Button>
+            </div>
         </>
     );
 
