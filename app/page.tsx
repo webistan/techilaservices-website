@@ -14,6 +14,7 @@ import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
 import { GET_HOME_PAGE_DATA } from "@/lib/wp-queries"
 import { HomePageData } from "@/lib/types/home-page"
 import VideoPlayer from "@/components/ui/VideoPlayer"
+import FAQSection from "@/components/HomePageSections/FAQSection"
 
 export default async function Home() {
   // Fetch home page data server-side
@@ -67,6 +68,10 @@ export default async function Home() {
 
         <Section>
           <WorkProcessSection data={processSectionData} />
+        </Section>
+
+        <Section>
+          <FAQSection />
         </Section>
       </main>
 

@@ -5,6 +5,7 @@ import MoreAboutButton from "../Buttons/moreAboutButton"
 import React, { useEffect, useState } from 'react'
 import ProfileCard from "./ProfileCard"
 import AnimatedCounter from '../ui/AnimatedCounter'
+import FAQSection from "@/components/HomePageSections/FAQSection"
 
 interface HeroProps {
   data?: {
