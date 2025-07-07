@@ -167,7 +167,9 @@ export const GET_HOME_PAGE_DATA = gql`
         }
       }
     }
-  homePageWorkProcess {
+
+
+homePageWorkProcess {
           sectionHeading
           processLink
           processDetails {
@@ -177,6 +179,8 @@ export const GET_HOME_PAGE_DATA = gql`
           }
           
         }
+
+
     ourClientHomePage {
       homePageClients {
         nodes {

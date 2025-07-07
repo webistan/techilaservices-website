@@ -11,6 +11,19 @@ export interface HomePageData {
         }; 
       }[];
     };
+
+    homePageWorkProcess: {
+      sectionHeading: string;
+      processLink: string;
+      processDetails: {
+        fieldGroupName: string;
+        proccessTitle: string;
+        processExcerpt: string;
+      }[];
+    };
+
+
+    
     ourClientHomePage: any;
     homePageHeroSection: {
       heroPostLink: string;
@@ -69,6 +82,13 @@ export interface HomePageData {
             }
           }
         }
+      }[];
+    };
+    homePageFAQSection: {
+      sectionTitle: string;
+      faqs: {
+        question: string;
+        answer: string;
       }[];
     };
   };
