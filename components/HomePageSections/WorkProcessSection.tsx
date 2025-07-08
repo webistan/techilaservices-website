@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Link from 'next/link';
-
+import MoreAboutButton from "../Buttons/moreAboutButton"
 interface ProcessDetail {
   data?: {
   sectionHeading: string;
@@ -31,10 +31,16 @@ const WorkProcessSection = ({data}:ProcessDetail) => {
             </h2>
             
              <Link href={data?.processLink || "#"} className="inline-flex items-center" target="_blank"> 
-            <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-3">
-              Work with us
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+           
+
+            <MoreAboutButton
+                className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-8"
+                buttonText="Work With Us"
+               href="/contact"
+              />      
+
+
+
             </Link>
           </div>
 
