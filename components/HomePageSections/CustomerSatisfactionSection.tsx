@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
+import MoreAboutButton from "../Buttons/moreAboutButton"
 interface CustomerSatisfactionProps {
   data?: {
     sectionTitle: string;
@@ -13,7 +13,7 @@ interface CustomerSatisfactionProps {
 }
 
 const CustomerSatisfactionSection = ({ data }: CustomerSatisfactionProps) => {
-  console.log("CustomerSatisfactionProps",data)
+ 
   return (
     <section className="px-6 py-16 bg-white">
       <div className="px-20 mx-10 mx-auto">
@@ -25,10 +25,11 @@ const CustomerSatisfactionSection = ({ data }: CustomerSatisfactionProps) => {
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-8 max-w-80">
                 {data?.sectionTitle}
               </h2>
-              <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-3">
-                Work with us
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <MoreAboutButton
+                className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
+                buttonText="Work With Us"
+               href="/contact"
+              />      
             </div>
 
             {/* Right Content - Chart */}
