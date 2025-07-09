@@ -11,7 +11,7 @@ interface ProcessDetail {
             fieldGroupName: string;
             proccessTitle: string;
             processExcerpt: string;
-          }
+          }[]
 } 
 }
 

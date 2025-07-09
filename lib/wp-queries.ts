@@ -235,6 +235,28 @@ homePageWorkProcess {
         }
       }
     }
+
+      homePageFaq {
+          fieldGroupName
+          faqPost {
+            edges {
+              node {
+                slug
+                faq {
+                  faq {
+                    faqAnswer
+                    faqQuestion
+                    fieldGroupName
+                  }
+                  fieldGroupName
+                }
+              }
+            }
+          }
+        }
+
+
+
     homePageAboutUs {
       aboutUsLink
       aboutUsTitle

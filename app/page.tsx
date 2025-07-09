@@ -33,6 +33,7 @@ export default async function Home() {
   const servicesSectionData = pageData?.servicesShowOnHomePage;
 
   const processSectionData = pageData?.homePageWorkProcess;
+  const faqSectionData = pageData?.homePageFaq;
  
   return (
     <div className="min-h-screen bg-background">
@@ -71,7 +72,7 @@ export default async function Home() {
         </Section>
 
         <Section>
-          <FAQSection />
+          <FAQSection data={faqSectionData} />
         </Section>
       </main>
 

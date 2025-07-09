@@ -84,12 +84,23 @@ export interface HomePageData {
         }
       }[];
     };
-    homePageFAQSection: {
-      sectionTitle: string;
-      faqs: {
-        question: string;
-        answer: string;
-      }[];
+    homePageFaq: {
+      fieldGroupName: string;
+      faqPost: {
+        edges: {
+          node: {
+            slug: string;
+            faq: {
+              faq: {
+                faqAnswer: string;
+                faqQuestion: string;
+                fieldGroupName: string;
+              };
+              fieldGroupName: string;
+            };
+          };
+        }[];
+      };
     };
   };
 }
