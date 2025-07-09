@@ -56,6 +56,37 @@ export const GET_BLOG_POST_BY_SLUG = gql`
   }
 `;
 
+
+export const GET_BLOG_PAGE_BY_SLUG = gql`
+    query GetBlogPageBySlug($slug: ID!) {
+      page(id: $slug, idType: URI) {
+        id
+        date
+        title(format: RENDERED)
+        contentTypeName
+        content(format: RENDERED)
+        newServiceSection {
+          bottomBannerStats
+          leftContent
+          serviceExpert
+          bottomBanner {
+            node {
+              filePath(size: LARGE)
+            }
+          }
+          rightSectionImage {
+            node {
+              filePath(size: LARGE)
+            }
+          }
+        }
+      }
+    }
+`;
+
+
+
+
 export const GET_CASE_STUDIES = gql`
   query GetCaseStudies($first: Int = 10) {
     caseStudies(first: $first) {

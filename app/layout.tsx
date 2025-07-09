@@ -11,8 +11,12 @@ export const metadata: Metadata = {
   description: 'Professional IT services and solutions for your business needs',
   keywords: 'IT services, technology solutions, business IT, digital transformation',
   authors: [{ name: 'Techila Services' }],
-  viewport: 'width=device-width, initial-scale=1',
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,

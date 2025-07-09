@@ -4,9 +4,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ChevronRight, Plus, Minus, PlayCircle, Instagram, Twitter, Facebook } from "lucide-react"
 import Header from "@/components/Header/header"
 import Footer from "@/components/Footer/footer"
+import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
+import { GET_BLOG_PAGE_BY_SLUG } from "@/lib/wp-queries"
+import { notFound } from "next/navigation"
+import MoreAboutButton from "@/components/Buttons/moreAboutButton"
 
-// Placeholder data - replace with your actual content
-const faqData = [
+const faqData: { question: string; answer: string }[] = [
   {
     question: "What services does your consultancy company provide?",
     answer:
@@ -47,9 +50,9 @@ const faqData = [
     answer:
       "Absolutely. We cater to businesses of all sizes, from startups and SMEs to large enterprises. Our solutions are scalable and tailored to your specific needs.",
   },
-]
+];
 
-const processSteps = [
+const processSteps: { step: string; title: string; description: string }[] = [
   {
     step: "Step-01",
     title: "Find business needs",
@@ -70,9 +73,17 @@ const processSteps = [
     title: "Results deliver measurable",
     description: "Trade stocks of the biggest names in the international stock market",
   },
-]
+];
 
-export default function ServicesPage() {
+export default async function BlogPageBySlug({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const { data, error } = await fetchWordPressQuery<any>(GET_BLOG_PAGE_BY_SLUG, { slug });
+  const post = data?.page;
+ console.log("post", data);
+  if (!post || error) {
+    notFound();
+  }
+
   return (
     <>
     <Header/>
@@ -83,12 +94,11 @@ export default function ServicesPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-sm uppercase tracking-widest text-neutral-500 mb-2">SERVICES DETAILS</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Chain & Supply Advisory</h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">{post.title}</h1>
             </div>
             <div className="md:text-right">
               <p className="text-neutral-600 mb-4 max-w-md ml-auto">
-                Crafting new bright brand unique visual systems digital experience focused on wide range of original
-                collabs.
+                {post.newServiceSection.serviceExpert}
               </p>
               <a href="#" className="inline-flex items-center font-semibold text-neutral-800 hover:text-neutral-600">
                 See the plan <ChevronRight className="w-4 h-4 ml-1" />
@@ -119,54 +129,54 @@ export default function ServicesPage() {
           </a>
         </div>
       </section>
-
+ {/* Contact CTA Section */}
+ <section className="bg-[#000A64] py-12 md:py-20">
+  <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+    <div>
+      <p className="text-xs uppercase tracking-widest text-white/70 mb-2">Get in touch</p>
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+        Request A Free Consultation <span className="text-white/70">/</span> Need Any Help For Business &amp; Consulting
+      </h2>
+    </div>
+    <a
+      href="/contact"
+      className="mt-6 md:mt-0 inline-flex items-center text-[#000A64] font-semibold px-8 py-4 rounded-full shadow-lg transition hover:bg-neutral-100"
+    >
+       <MoreAboutButton
+                className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
+                buttonText="Contact Us"
+                href={data?.heroPostLink}
+              />
+    </a>
+  </div>
+</section>
       {/* Offerings Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Lose the location limitation Seamlessly hire & manage worldwide.
-              </h2>
-              <p className="text-neutral-600 mb-8">
-                You need the best person for the job, wherever they're located. We provide support, payroll tax
-                management, and compliance management for remote, multi-state, multi-location, and international
-                employees.
-              </p>
-              <h3 className="text-xl font-semibold mb-3">Binox Offerings</h3>
-              <ul className="space-y-2 mb-8">
-                {[
-                  "We believe that the human essential to start any successful project and that this where splendid emotion between the re-generated company.",
-                  "We believe that the human essential to start any successful project and that this where splendid emotion between the re-generated company.",
-                  "We believe that the human essential to start any successful project and that this where splendid emotion between the re-generated company.",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-neutral-500 mr-2 mt-1 shrink-0" />
-                    <span className="text-neutral-600">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <h3 className="text-xl font-semibold mb-3">What's included binox service?</h3>
-              <ul className="space-y-2 mb-8">
-                {["Multi-state payroll processing", "National benefit products", "HR reporting"].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <Plus className="w-5 h-5 text-neutral-500 mr-2 mt-1 shrink-0" />
-                    <span className="text-neutral-600">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div dangerouslySetInnerHTML={{ __html: post.newServiceSection.leftContent }} />
+                  
               <Button size="lg" className="bg-neutral-800 text-white hover:bg-neutral-700">
                 Contact Us <ChevronRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
             <div>
-              <Image
-                src="/placeholder.svg?width=600&height=700"
-                alt="Professional businesswoman in a meeting"
-                width={600}
+            
+      
+
+<Image
+          src={`https://techilaservices.com/${post.newServiceSection.rightSectionImage.node.filePath}`}
+          alt="Two consultants collaborating"
+          width={600}
                 height={700}
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
-              />
+         className="w-full h-auto object-cover rounded-lg shadow-lg"
+        />
+
+
+
+
+
             </div>
           </div>
         </div>
@@ -220,7 +230,7 @@ export default function ServicesPage() {
       {/* Consultant Section */}
       <section className="relative py-16 md:py-24">
         <Image
-          src="/placeholder.svg?width=1600&height=700"
+          src={`https://techilaservices.com/${post.newServiceSection.bottomBanner.node.filePath}`}
           alt="Two consultants collaborating"
           layout="fill"
           objectFit="cover"
@@ -228,12 +238,10 @@ export default function ServicesPage() {
         />
         <div className="absolute inset-0 bg-black/30 z-0"></div>
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center min-h-[400px] md:min-h-[500px]">
-          <button aria-label="Play video" className="mb-8 text-white hover:text-neutral-200">
-            <PlayCircle className="w-20 h-20 md:w-24 md:h-24" />
-          </button>
+          
           <div className="bg-neutral-800 text-white p-8 md:p-10 text-center max-w-sm ml-auto md:absolute md:bottom-10 md:right-10 rounded-lg">
             <p className="text-5xl md:text-6xl font-bold mb-2">30+</p>
-            <p className="text-lg">Our talented consultant</p>
+            <p className="text-lg">{post.newServiceSection.bottomBannerStats}</p>
           </div>
         </div>
       </section>
@@ -266,6 +274,7 @@ export default function ServicesPage() {
         </div>
       </section>
     </div>
+   
     <Footer/>
     </>
   )
