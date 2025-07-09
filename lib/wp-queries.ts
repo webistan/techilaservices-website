@@ -298,6 +298,7 @@ export const GET_MENU_ITEMS = gql`
                     node {
                       id
                       label
+                      uri
                     }
                   }
                 }

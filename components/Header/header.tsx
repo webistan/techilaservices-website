@@ -7,7 +7,7 @@ const Header = async () => {
   const mapMenuItem = (node: any): any => ({
     id: node.id,
     label: node.label,
-    url: node.url,
+    url: node.uri,
     image: node.image,
     childItems: node.childItems ? {
       edges: node.childItems.edges.map((edge: any) => ({ node: mapMenuItem(edge.node) }))

@@ -8,6 +8,7 @@ import React, { useState } from "react";
 interface MenuItem {
   id: string;
   label: string;
+  url?: string;
   childItems?: {
     edges: { node: MenuItem }[];
   };
@@ -31,7 +32,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null);
   const [mobileHoveredLevel2, setMobileHoveredLevel2] = useState<string | null>(null);
-
+console.log("menuItems", menuItems);
   return (
     <>
       {/* Hamburger for mobile */}
@@ -73,8 +74,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                     <div className="flex flex-col min-w-[260px] gap-2 bg-[#dadada] text-white rounded-xl py-8">
                       <span className="uppercase text-xs font-semibold text-muted-foreground mb-2 tracking-widest pl-10">{node.label}</span>
                       {node.childItems.edges.map(({ node: level2 }: { node: MenuItem }) => (
-                        <div
+                        <Link
                           key={level2.id}
+                          href={level2.url || '#'}
                           className={cn(
                             "flex items-start gap-3 p-4  cursor-pointer transition-all border border-transparent pl-10 hover:text-[#F97316]",
                             hoveredLevel2 === level2.id
@@ -90,7 +92,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                             </div>
                             {/* If you have a description field, show it here */}
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                     {/* Main Panel (Level 3) */}
@@ -106,12 +108,16 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                           const activeLevel2 = node.childItems.edges.find(({ node: l2 }: { node: MenuItem }) => l2.id === hoveredLevel2) || node.childItems.edges[0];
                           return activeLevel2 && activeLevel2.node.childItems && activeLevel2.node.childItems.edges.length > 0 ? (
                             activeLevel2.node.childItems.edges.map(({ node: level3 }: { node: MenuItem }) => (
-                              <div key={level3.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/10 hover:text-[#F97316] transition-colors cursor-pointer">
+                              <Link 
+                                key={level3.id} 
+                                href={level3.url || '#'}
+                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/10 hover:text-[#F97316] transition-colors cursor-pointer"
+                              >
                                 {/* Optionally add an icon here if available */}
                                 <div className="font-medium text-foreground text-sm flex items-center gap-2 hover:text-[#F97316]">
                                   {level3.label}
                                 </div>
-                              </div>
+                              </Link>
                             ))
                           ) : (
                             <div className="text-muted-foreground col-span-2">No solutions available</div>
@@ -217,8 +223,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                                   {mobileHoveredLevel2 === level2.id && level2.childItems && level2.childItems.edges.length > 0 && (
                                     <ul className="pl-4 border-l border-muted/10 flex flex-col gap-1 mt-1">
                                       {level2.childItems.edges.map(({ node: level3 }: { node: MenuItem }) => (
-                                        <li key={level3.id} className="py-1 px-2 text-foreground/70 hover:text-[#F97316] text-sm">
-                                          {level3.label}
+                                        <li key={level3.id}>
+                                          <Link 
+                                            href={level3.url || '#'}
+                                            className="block py-1 px-2 text-foreground/70 hover:text-[#F97316] text-sm"
+                                          >
+                                            {level3.label}
+                                          </Link>
                                         </li>
                                       ))}
                                     </ul>
