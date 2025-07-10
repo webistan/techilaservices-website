@@ -8,6 +8,7 @@ import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
 import { GET_BLOG_PAGE_BY_SLUG } from "@/lib/wp-queries"
 import { notFound } from "next/navigation"
 import MoreAboutButton from "@/components/Buttons/moreAboutButton"
+import ServiceTopBanner from "@/components/ServiceTopBanner";
 
 const faqData: { question: string; answer: string }[] = [
   {
@@ -87,6 +88,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
   return (
     <>
     <Header/>
+    <ServiceTopBanner />
     <div className="bg-white text-neutral-800">
       {/* Hero Section */}
       <section className="relative bg-neutral-50 py-16 md:py-24 lg:py-32">
@@ -105,10 +107,10 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
               </a>
             </div>
           </div>
-          <div className="mt-12 md:mt-16">
+          <div className="mt-12 md:mt-16 ">
             <Image
-              src="/placeholder.svg?width=1200&height=600"
-              alt="Team collaborating in a modern office"
+              src={`https://techilaservices.com/${post.featuredImage.node.filePath}`}
+              alt="Featured Image of the Post"
               width={1200}
               height={600}
               className="w-full h-auto object-cover rounded-lg shadow-lg"

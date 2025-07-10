@@ -63,6 +63,11 @@ export const GET_BLOG_PAGE_BY_SLUG = gql`
         id
         date
         title(format: RENDERED)
+        featuredImage {
+          node {
+            filePath
+          }
+        }
         contentTypeName
         content(format: RENDERED)
         newServiceSection {
