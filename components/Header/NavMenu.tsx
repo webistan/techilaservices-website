@@ -32,7 +32,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null);
   const [mobileHoveredLevel2, setMobileHoveredLevel2] = useState<string | null>(null);
-console.log("menuItems", menuItems);
+ 
   return (
     <>
       {/* Hamburger for mobile */}

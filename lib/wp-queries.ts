@@ -347,3 +347,94 @@ export const GET_MENU_ITEMS = gql`
   }
 `;
 
+export const GET_CASE_STUDIES_NEW = gql`
+  query GetCaseStudies($first: Int = 6, $after: String) {
+    nProjects(first: $first, after: $after) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        endCursor
+        startCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          slug
+          title(format: RENDERED)
+          featuredImage {
+            node {
+              filePath(size: LARGE)
+              sourceUrl(size: LARGE)
+            }
+          }
+          nProjectCategories {
+            edges {
+              node {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_CASE_STUDY_BY_SLUG = gql`
+  query GetCaseStudyBySlug($slug: ID!) {
+    nProject(id: $slug, idType: SLUG) {
+      content(format: RENDERED)
+      title(format: RENDERED)
+      featuredImage {
+        node {
+          sourceUrl(size: LARGE)
+        }
+      }
+      caseStudiesFields {
+        industry
+        startDate
+        client
+      }
+    }
+  }
+`;
+
+export const GET_PRODUCTS = gql`
+  query GetProducts($first: Int = 6, $after: String) {
+    products(first: $first, after: $after) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        endCursor
+        startCursor
+      }
+      edges {
+        node {
+          id
+          title(format: RENDERED)
+          slug
+          date
+          excerpt(format: RENDERED)
+          featuredImage {
+            node {
+              sourceUrl(size: MEDIUM_LARGE)
+            }
+          }
+          author {
+            node {
+              name
+              avatar {
+                url
+                width
+                height
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+

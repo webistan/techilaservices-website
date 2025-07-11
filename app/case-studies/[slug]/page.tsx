@@ -2,6 +2,8 @@ import Image from "next/image"
 import { Target, Store, Zap, MapPinned, Plus } from "lucide-react"
 import Header from "@/components/Header/header"
 import Footer from "@/components/Footer/footer"
+import { fetchWordPressQuery } from "../../../lib/fetch-wordpress-query"
+import { GET_CASE_STUDY_BY_SLUG } from "../../../lib/wp-queries"
 
 // Placeholder data - replace with actual data for each case study
 const caseStudyData = {
@@ -67,26 +69,56 @@ const caseStudyData = {
   },
 }
 
-export default function CaseStudyDetailPage({ params }: { params: { slug: string } }) {
-  // In a real app, you would fetch caseStudyData based on params.slug
+function formatDate(dateString?: string) {
+  if (!dateString) return "-";
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "-";
+  const day = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'short' });
+  const year = date.getFullYear();
+  // Get ordinal suffix
+  const j = day % 10, k = day % 100;
+  let dayStr = day +
+    (j === 1 && k !== 11 ? "st" :
+     j === 2 && k !== 12 ? "nd" :
+     j === 3 && k !== 13 ? "rd" : "th");
+  return `${dayStr} ${month} ${year}`;
+}
+
+export default async function CaseStudyDetailPage({ params }: { params: { slug: string } }) {
+  // Fetch dynamic case study data on the server
+  const { data, error } = await fetchWordPressQuery<any>(GET_CASE_STUDY_BY_SLUG, { slug: params.slug });
   const study = caseStudyData
 
+  // Dynamic data
+  const dynamicTitle = data?.nProject?.title;
+  const dynamicImage = data?.nProject?.featuredImage?.node?.sourceUrl;
+  const meta = data?.nProject?.caseStudiesFields || {};
+  const industry = meta.industry || "-";
+  const client = meta.client || "-";
+  const startDate = formatDate(meta.startDate);
+const content = data?.nProject?.content;
   return (
    <>
    <Header/>
    <div className="bg-white text-neutral-800">
       {/* Header Section */}
       <header className="py-12 md:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm uppercase tracking-wider text-neutral-500 mb-2">{study.preTitle}</p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8">{study.title}</h1>
-          <div className="aspect-w-16 aspect-h-7 rounded-lg overflow-hidden shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8">
+            {error ? 'Failed to load' : dynamicTitle || study.title}
+          </h1>
+        </div>
+        {/* Full-width featured image with 20px side padding, no scrollbars */}
+        <div className="w-full px-[20px] box-border">
+          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[520px]">
             <Image
-              src={study.heroImageUrl || "/placeholder.svg"}
-              alt={`${study.title} hero image`}
-              width={1200}
-              height={600} // Adjusted for a 2:1 aspect ratio, can be fine-tuned
-              className="w-full h-full object-cover"
+              src={error ? study.heroImageUrl : dynamicImage || "/placeholder.svg"}
+              alt={`${dynamicTitle || study.title} hero image`}
+              fill
+              className="object-cover w-full h-full"
+              priority
             />
           </div>
         </div>
@@ -100,15 +132,15 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
             <aside className="md:col-span-1 space-y-6 text-sm">
               <div>
                 <h3 className="font-semibold text-neutral-600 mb-1">Industry</h3>
-                <p>{study.meta.industry}</p>
+                <p className="border-l-2 border-black pl-4">{industry}</p>
               </div>
               <div>
                 <h3 className="font-semibold text-neutral-600 mb-1">Client</h3>
-                <p>{study.meta.client}</p>
+                <p className="border-l-2 border-black pl-4">{client}</p>
               </div>
               <div>
                 <h3 className="font-semibold text-neutral-600 mb-1">Start Date</h3>
-                <p>{study.meta.startDate}</p>
+                <p className="border-l-2 border-black pl-4">{startDate}</p>
               </div>
             </aside>
 
@@ -117,17 +149,19 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
               {/* Problem Section */}
               <section>
                 <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">{study.problem.title}</p>
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4">{study.problem.heading}</h2>
-                <p className="text-neutral-600 mb-4">{study.problem.description1}</p>
-                <p className="text-neutral-600 mb-8">{study.problem.description2}</p>
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4"> {error ? 'Failed to load' : dynamicTitle || study.title}</h2>
+                <div className="text-neutral-600 mb-4" dangerouslySetInnerHTML={{ __html: content || "" }} />
+                
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <Image
-                    src={study.problem.imageUrl || "/placeholder.svg"}
+                    src={error ? study.heroImageUrl : dynamicImage || "/placeholder.svg"}
                     alt="Problem illustration"
                     width={1000}
                     height={400}
                     className="w-full h-auto object-cover"
                   />
+               
+                  
                 </div>
               </section>
 

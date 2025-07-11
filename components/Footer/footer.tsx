@@ -174,10 +174,10 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             <div className="flex space-x-4 mb-4 md:mb-0">
-              <Link href="#" aria-label="Facebook" className="text-brand-gray-link hover:text-white">
+              <Link href="https://www.facebook.com/techilaservices" aria-label="Facebook" className="text-brand-gray-link hover:text-white">
                 <Facebook className="w-5 h-5" />
               </Link>
-              <Link href="#" aria-label="Twitter" className="text-brand-gray-link hover:text-white">
+              <Link href="https://x.com/techilaservices" aria-label="Twitter" className="text-brand-gray-link hover:text-white">
                 <Twitter className="w-5 h-5" />
               </Link>
               <Link href="#" aria-label="YouTube" className="text-brand-gray-link hover:text-white">
@@ -188,7 +188,7 @@ export default function Footer() {
               </Link>{" "}
               {/* Placeholder for WordPress */}
             </div>
-            <p className="text-brand-gray-link">&copy; {new Date().getFullYear()} Crowdyflow Agency</p>
+            <p className="text-brand-gray-link">&copy; {new Date().getFullYear()} Techila Global Services</p>
           </div>
         </div>
       </div>
