@@ -14,7 +14,7 @@ export default function AboutHeroSection() {
           className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none"
         >
           <span className="font-serif text-[30rem] md:text-[40rem] lg:text-[50rem] text-[#e6eaea] leading-none -translate-x-1/4 ml-[25%]">
-            A
+            T
           </span>
         </div>
       </div>
