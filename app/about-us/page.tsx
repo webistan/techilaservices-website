@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Header from "@/components/Header/header"
 import AboutHeroSection from "@/components/HomePageSections/AboutHero"
 import Footer from "@/components/Footer/footer"
+import OurTeamSection from "@/components/OurTeamSection"
 
 export default function AboutPage() {
   return (
@@ -20,7 +21,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=600&width=450"
+                src="/images/01.png?height=600&width=450"
                 alt="Business consultant"
                 width={450}
                 height={600}
@@ -38,7 +39,7 @@ export default function AboutPage() {
                 </div>
                 <div className="bg-gray-200 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src="/images/aboutleft.jpg?height=100&width=100"
                     alt="Business meeting"
                     width={200}
                     height={200}
@@ -48,14 +49,13 @@ export default function AboutPage() {
               </div>
 
               <p className="text-sm text-gray-600 mb-6">
-                We are passionate about guiding businesses through their financial journey with expertise, integrity and
-                a personalized approach. we're highly dedicated to financial journey business we operate in a like an
-                intricate field down with money.
+              Our objective is always to create remarkable value for our clients (and their customers) by leveraging cloud and mobile technology, digital media, the internet and the talent of our people.
               </p>
 
               <p className="text-sm text-gray-600 mb-8">
-                Working with <span className="underline font-medium">lower cost</span> gives you a peace of mind in
-                real-time, and that your taxes are filed and paid on schedule.
+              Techila Global Services is a distinguished digital transformation consulting and technology firm with a global footprint spanning the United States, Europe, and the Asia-Pacific region. As a Salesforce.com Platinum Partner, they deliver innovative solutions and strategic guidance to over 100 enterprise clients worldwide, empowering organizations to modernize their operations and drive sustainable growth.
+
+
               </p>
 
               <Button variant="default" className="bg-black text-white rounded-none px-6">
@@ -69,7 +69,7 @@ export default function AboutPage() {
       {/* Experience Banner */}
       <section className="relative">
         <Image
-          src="/placeholder.svg?height=500&width=1200"
+          src="/images/sss.jpg?height=500&width=1200"
           alt="Team collaboration"
           width={1200}
           height={500}
@@ -101,10 +101,11 @@ export default function AboutPage() {
                 emotion between the client and company is born.
               </p>
               <div className="flex flex-wrap gap-8 mt-8 items-center">
-                <Image src="/placeholder.svg?height=40&width=100" alt="Partner logo" width={100} height={40} />
-                <Image src="/placeholder.svg?height=40&width=100" alt="Walmar logo" width={100} height={40} />
-                <Image src="/placeholder.svg?height=40&width=100" alt="Next logo" width={100} height={40} />
-                <Image src="/placeholder.svg?height=40&width=100" alt="Pik logo" width={100} height={40} />
+                <Image src="/images/partner1.png?height=40&width=100" alt="Partner logo" width={100} height={40} />
+                <Image src="/images/partner2.png?height=40&width=100" alt="Walmar logo" width={100} height={40} />
+                <Image src="/images/partner3.png?height=40&width=100" alt="Next logo" width={100} height={40} />
+                <Image src="/images/partner4.png?height=40&width=100" alt="Pik logo" width={100} height={40} />
+                
               </div>
             </div>
           </div>
@@ -112,37 +113,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-xs uppercase tracking-wider mb-2">OUR TEAM</p>
-            <h2 className="text-3xl md:text-4xl font-bold">Meet the talented team</h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: "Aman Joey", position: "Co-Ordinator" },
-              { name: "Kamal Abraham", position: "Senior Executive" },
-              { name: "Daniyel Joe", position: "Marketing Leader" },
-              { name: "Halvam Alvida", position: "Merchandiser" },
-            ].map((member, index) => (
-              <div key={index} className="mb-8">
-                <div className="mb-4 overflow-hidden">
-                  <Image
-                    src={`/placeholder.svg?height=300&width=250&text=Team${index + 1}`}
-                    alt={member.name}
-                    width={250}
-                    height={300}
-                    className="w-full object-cover"
-                  />
-                </div>
-                <h3 className="font-bold text-lg">{member.name}</h3>
-                <p className="text-sm text-gray-600">{member.position}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <OurTeamSection />
 
       <Footer/>
     </main>

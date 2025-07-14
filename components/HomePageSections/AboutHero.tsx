@@ -27,7 +27,7 @@ export default function AboutHeroSection() {
       {/* Foreground Content */}
       <div className="absolute inset-0 flex items-center justify-center p-8">
         <div className="md:max-w-4xl text-left">
-          <p className="text-sm font-bold tracking-[0.3em] uppercase mb-6">BINOX ABOUT US</p>
+          <p className="text-sm font-bold tracking-[0.3em] uppercase mb-6">Techila Global Services ABOUT US</p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
             We&apos;re a consultant agency we working globally with-biggest company
           </h1>

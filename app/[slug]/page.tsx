@@ -84,6 +84,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
   if (!post || error) {
     notFound();
   }
+   
 
   return (
     <>

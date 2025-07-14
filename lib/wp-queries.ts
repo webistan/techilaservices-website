@@ -438,3 +438,39 @@ export const GET_PRODUCTS = gql`
   }
 `;
 
+export const GET_PRODUCT_BY_SLUG = gql`
+  query GetProductBySlug($slug: String!) {
+    productBy(slug: $slug) {
+      id
+      content(format: RENDERED)
+      featuredImage {
+        node {
+          sourceUrl(size: LARGE)
+        }
+      }
+      title(format: RENDERED)
+    }
+  }
+`;
+
+export const GET_OURTEAM_SLUG = gql`
+  query GET_OURTEAM_SLUG($slug: String!) {
+    webNewCustomFieldBy(slug: $slug) {
+      id
+      meetOurTeam {
+        meetOurTeam {
+          bio
+          designation
+          linkdinUrl
+          teamMemberName
+          teamMemberImage {
+            node {
+              sourceUrl(size: LARGE)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
