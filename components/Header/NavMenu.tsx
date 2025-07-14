@@ -180,6 +180,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
         <Link href="/blogs" className="text-foreground/80 hover:text-[#F97316] transition-colors">
                 Blogs
       </Link>
+      <Link href="/career" className="text-foreground/80 hover:text-[#F97316] transition-colors">
+                Career
+      </Link>
       </nav>
 
       {/* Mobile Menu Drawer */}
@@ -272,6 +275,8 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                 ))}
               </ul>
               <Button variant="outline" className="rounded-full px-6 mt-4 w-full">Talk to sales</Button>
+              <Link href="/blogs" className="block mt-4 text-foreground/80 hover:text-[#F97316] transition-colors">Blogs</Link>
+              <Link href="/career" className="block mt-2 text-foreground/80 hover:text-[#F97316] transition-colors">Career</Link>
             </div>
           </div>
         </div>
