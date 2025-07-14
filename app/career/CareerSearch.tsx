@@ -1,27 +1,53 @@
 "use client";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Job } from "@/lib/types/job.model";
 import CareerJobList from "./CareerJobList";
+import React from "react";
 
-export default function CareerSearch({ jobs }: { jobs: any[] }) {
-  const [search, setSearch] = useState("");
-  const filteredJobs = jobs.filter(job =>
-    job.title.toLowerCase().includes(search.toLowerCase()) ||
-    job.location.toLowerCase().includes(search.toLowerCase()) ||
-    job.type.toLowerCase().includes(search.toLowerCase())
-  );
+interface CareerSearchProps {
+  jobs: Job[];
+  nextCursor: string | null;
+  query: string;
+}
+
+export default function CareerSearch({ jobs, nextCursor, query }: CareerSearchProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [search, setSearch] = React.useState(query || "");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push(`/career?query=${encodeURIComponent(search)}`);
+  };
+
+  const handleNext = () => {
+    if (nextCursor) {
+      router.push(`/career?cursor=${nextCursor}&query=${encodeURIComponent(search)}`);
+    }
+  };
 
   return (
     <>
-      <div className="mb-8">
-        <Input
-          placeholder="Search jobs by title, location, or type..."
+      <form onSubmit={handleSearch} className="mb-6 flex gap-2">
+        <input
+          type="text"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="bg-white"
+          placeholder="Search jobs..."
+          className="px-4 py-2 border rounded w-full max-w-md"
         />
+        <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded font-semibold">Search</button>
+      </form>
+      <CareerJobList jobs={jobs} />
+      <div className="flex justify-end mt-8">
+        <button
+          onClick={handleNext}
+          disabled={!nextCursor}
+          className={`px-4 py-2 rounded bg-blue-600 text-white font-semibold ${!nextCursor ? "opacity-50 cursor-not-allowed" : ""}`}
+        >
+          Next
+        </button>
       </div>
-      <CareerJobList jobs={filteredJobs} />
     </>
   );
 } 
