@@ -29,7 +29,7 @@ export default function AboutHeroSection() {
         <div className="md:max-w-4xl text-left">
           <p className="text-sm font-bold tracking-[0.3em] uppercase mb-6">Techila Global Services ABOUT US</p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
-            We&apos;re a consultant agency we working globally with-biggest company
+          We Reduce Salesforce Implementation To A Few Clicks!
           </h1>
         </div>
       </div>

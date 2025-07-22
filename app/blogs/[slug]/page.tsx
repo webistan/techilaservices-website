@@ -15,7 +15,6 @@ import SocialShareSideSection from "@/components/Social-Share-Side"
 export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
   const { data, error } = await fetchWordPressQuery<any>(GET_BLOG_POST_BY_SLUG, { slug: params.slug });
   const post = data?.post;
-  console.log("postpostpost", post)
 
   if (!post || error) {
     notFound();

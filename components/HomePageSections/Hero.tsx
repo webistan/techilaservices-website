@@ -22,8 +22,7 @@ interface HeroProps {
       };
     }[];
   };
-}
-
+} 
 const Hero = ({ data }: HeroProps) => {
 
   return (
@@ -75,6 +74,7 @@ const Hero = ({ data }: HeroProps) => {
               <div className="flex flex-row w-full col-span-2 w-full gap-4">
                 {/* Stats cards dynamically rendered from heroStats */}
                 {data?.heroStats?.map((stat, idx) => (
+              
                   <Card key={idx} className="bg-slate-100 border-0 rounded-3xl w-full">
                     <CardContent className="px-14 py-16 flex flex-col items-center">
                       <div className="text-4xl font-bold text-slate-900 mb-2">

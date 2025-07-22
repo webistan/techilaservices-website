@@ -244,13 +244,6 @@ homePageWorkProcess {
       }
     }
     
-    homePageOurReachSection {
-      sectionHeading
-      reachSectionStats {
-        reachStats
-        reachTitle
-      }
-    }
     homePageSuccessSection {
       sectionTitle
       successStats {
@@ -468,6 +461,21 @@ export const GET_OURTEAM_SLUG = gql`
               sourceUrl(size: LARGE)
             }
           }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_STATS = gql`
+  query GET_STATS {
+    post(id: "49017", idType: DATABASE_ID) {
+      id
+      homePageOurReachSection {
+        sectionHeading
+        reachSectionStats {
+          reachStats
+          reachTitle
         }
       }
     }

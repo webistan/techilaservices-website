@@ -52,7 +52,6 @@ const RotatingTestimonial = ({ testimonialPosts }: RotatingTestimonialProps) => 
   const [displayedIndex, setDisplayedIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  console.log("testimonialPoststestimonialPoststestimonialPosts", testimonialPosts)
 
   // Flatten all testimonials from all edges
   const testimonials = testimonialPosts?.edges?.flatMap(edge =>
@@ -63,7 +62,6 @@ const RotatingTestimonial = ({ testimonialPosts }: RotatingTestimonialProps) => 
       content: testimonial.testimonial,
     })) || []
   ) || [];
-  console.log("testimonialstestimonialstestimonialstestimonials",testimonials)
 
   useEffect(() => {
     if (!testimonials || testimonials.length === 0) return;

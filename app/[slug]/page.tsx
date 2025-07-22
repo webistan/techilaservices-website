@@ -7,7 +7,7 @@ import Footer from "@/components/Footer/footer"
 import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query"
 import { GET_BLOG_PAGE_BY_SLUG } from "@/lib/wp-queries"
 import { notFound } from "next/navigation"
-import MoreAboutButton from "@/components/Buttons/moreAboutButton"
+import CTA from "@/components/CTA"
 import ServiceTopBanner from "@/components/ServiceTopBanner";
 
 const faqData: { question: string; answer: string }[] = [
@@ -80,7 +80,6 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
   const { slug } = await params;
   const { data, error } = await fetchWordPressQuery<any>(GET_BLOG_PAGE_BY_SLUG, { slug });
   const post = data?.page;
- console.log("post", data);
   if (!post || error) {
     notFound();
   }
@@ -132,27 +131,14 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
           </a>
         </div>
       </section>
- {/* Contact CTA Section */}
- <section className="bg-[#000A64] py-12 md:py-20">
-  <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-    <div>
-      <p className="text-xs uppercase tracking-widest text-white/70 mb-2">Get in touch</p>
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-        Request A Free Consultation <span className="text-white/70">/</span> Need Any Help For Business &amp; Consulting
-      </h2>
-    </div>
-    <a
-      href="/contact"
-      className="mt-6 md:mt-0 inline-flex items-center text-[#000A64] font-semibold px-8 py-4 rounded-full shadow-lg transition hover:bg-neutral-100"
-    >
-       <MoreAboutButton
-                className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
-                buttonText="Contact Us"
-                href={data?.heroPostLink}
-              />
-    </a>
-  </div>
-</section>
+
+      {/* Contact CTA Section */}
+      <CTA
+        heading="Request A Free Consultation / Need Any Help For Business & Consulting"
+        buttonText="Contact Us"
+        buttonLink="/contact"
+      />
+
       {/* Offerings Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">

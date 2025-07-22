@@ -24,25 +24,20 @@ interface FAQSectionProps {
 
 const FAQSection: React.FC<FAQSectionProps> = ({ data }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  console.log("FAQSectionProps", data);
+  
 
   // Extract FAQ data from WordPress response with better error handling
   const faqs = data?.faqPost?.edges?.map(edge => {
-    console.log("Processing edge:", edge);
-    console.log("Edge node:", edge.node);
-    console.log("Edge node faq:", edge.node?.faq);
     
     // Handle different possible data structures
     const faqData = edge.node?.faq?.faq || edge.node?.faq || edge.node;
-    console.log("faqData", faqData);
+    
     return faqData;
   }) || [];
 
   // Handle nested array structure - flatten if needed
   const flattenedFaqs = Array.isArray(faqs[0]) ? faqs[0] : faqs;
-
-  console.log("faqs", faqs);
-  console.log("flattenedFaqs", flattenedFaqs);
+ 
 
   return (
     <section className="bg-[#f7f8fa] py-16 px-4 md:px-0 flex flex-col items-center">

@@ -13,7 +13,6 @@ async function getJobById(id: string): Promise<Job | null> {
   const docSnap = await getDoc(docRef);
   if (!docSnap.exists()) return null;
   const data = docSnap.data();
-  console.log("datadatadatadata",data)
   return {
     ...data,
     id: docSnap.id,

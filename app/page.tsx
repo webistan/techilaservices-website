@@ -15,6 +15,8 @@ import { GET_HOME_PAGE_DATA } from "@/lib/wp-queries"
 import { HomePageData } from "@/lib/types/home-page"
 import VideoPlayer from "@/components/ui/VideoPlayer"
 import FAQSection from "@/components/HomePageSections/FAQSection"
+import BlogSection from "@/components/HomePageSections/BlogSection"
+import RotatingTestimonial from "@/components/HomePageSections/RotatingTestimonial"
 
 export default async function Home() {
   // Fetch home page data server-side
@@ -28,7 +30,6 @@ export default async function Home() {
   const heroSectionData = pageData?.homePageHeroSection;
   const clientsData = pageData?.ourClientHomePage?.homePageClients?.nodes[0]?.homePageOurClients;
   const aboutUsSectionData = pageData?.homePageAboutUs;
-  const reachSectionData = pageData?.homePageOurReachSection;
   const successSectionData = pageData?.homePageSuccessSection;
   const servicesSectionData = pageData?.servicesShowOnHomePage;
 
@@ -55,7 +56,7 @@ export default async function Home() {
         </Section>
 
         <Section>
-          <StatisticsSection data={reachSectionData} />
+          <StatisticsSection />
         </Section>
 
         <Section>
@@ -70,7 +71,9 @@ export default async function Home() {
         <Section>
           <WorkProcessSection data={processSectionData} />
         </Section>
-
+        <Section>
+          <BlogSection />
+        </Section>
         <Section>
           <FAQSection data={faqSectionData} />
         </Section>

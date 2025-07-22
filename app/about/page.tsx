@@ -48,14 +48,21 @@ export default function AboutPage() {
               </div>
 
               <p className="text-sm text-gray-600 mb-6">
-                We are passionate about guiding businesses through their financial journey with expertise, integrity and
-                a personalized approach. we're highly dedicated to financial journey business we operate in a like an
-                intricate field down with money.
+              Techila Global Services is an award-winning Salesforce implementation and consulting partner with a global footprint covering the US, Europe, and the Asia-Pacific Region. Recently recognized as a Salesforce.com Summit Partner, it is a team of dedicated professionals who are genuinely passionate about new-age tech.
+
+              </p>
+
+
+              <p className="text-sm text-gray-600 mb-6">
+              We offer the world’s only AI-first Salesforce implementation and consulting services. Leveraging the competence of AI, we help organizations across the globe reap the benefits of Salesforce and all its offerings. With Techila Global Services, you can receive personalized consultation, implement Salesforce solutions, build Salesforce apps, and integrate them with little to no technical knowledge. Leave all the heavy lifting to us!
+
+
               </p>
 
               <p className="text-sm text-gray-600 mb-8">
-                Working with <span className="underline font-medium">lower cost</span> gives you a peace of mind in
-                real-time, and that your taxes are filed and paid on schedule.
+              Our aim has always been to make high-end tech accessible to everyone. Whether you run a multi-national company, a humble startup, a healthcare institution, or a public sector enterprise, we help you implement a personalized CRM solution for your organization.
+
+
               </p>
 
               <Button variant="default" className="bg-black text-white rounded-none px-6">
