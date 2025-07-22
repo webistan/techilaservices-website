@@ -175,7 +175,45 @@ export default function AboutPage() {
         buttonText="Contact Us"
         buttonLink="/contact"
       />
-      {/* Our Story, Mission, Vision, and Core Values Section */}
+      {/* Our Story Section */}
+      <section className="py-20 bg-gradient-to-br from-white via-slate-50 to-slate-100">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col items-center mb-16">
+            <span className="text-orange-500 text-sm font-bold uppercase tracking-widest mb-2">Our Story</span>
+            <h2 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-4 text-center">Our Journey</h2>
+            <div className="w-24 h-1 bg-orange-500 rounded-full mb-6"></div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center bg-white/80 rounded-3xl shadow-xl p-10">
+            {/* Story Text */}
+            <div>
+              <p className="text-lg text-slate-700 mb-6">
+                Techila Global Services was born out of an impulsive yet calculated decision of <span className="font-bold text-orange-500">Mr. Chitiz Agarwal</span>, our founder and CEO. An attempt to break free from the shackles of a corporate job led him to found a company with only two members.
+              </p>
+              <p className="text-lg text-slate-700 mb-6">
+                More than a decade later, the humble team of two increased to hundreds of professionals working across the globe. Even after establishing a reputable presence in the US, the Asia-Pacific region, and Europe, the spark of helping businesses embrace technology continues.
+              </p>
+              <p className="text-lg text-slate-700 mb-6">
+                After winning the trust of enterprises across the globe (including Fortune 500 companies), <span className="font-bold text-orange-500">Mr. Chitiz Agarwal</span> has now taken the initiative to help organizations and professionals implement Salesforce with an AI-first approach.
+              </p>
+              <div className="mt-8">
+                <span className="block text-slate-500 text-sm">Founder & CEO</span>
+                <span className="block text-xl font-bold text-slate-900">Mr. Chitiz Agarwal</span>
+              </div>
+            </div>
+            {/* Story Image */}
+            <div className="flex justify-center">
+              <Image
+                src="/images/Chitiz-Agarwal.jpeg"
+                alt="Chitiz Agarwal, Founder & CEO"
+                width={400}
+                height={500}
+                className="rounded-2xl shadow-lg object-cover w-full max-w-xs md:max-w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Our Mission, Vision Section */}
       <section className="py-20 bg-gradient-to-br from-white via-slate-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col items-center mb-16">
