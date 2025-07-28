@@ -79,6 +79,10 @@ export const GET_BLOG_PAGE_BY_SLUG = gql`
               filePath(size: LARGE)
             }
           }
+            servicesPageFaq {
+        faqAnswer
+        faqQuestion
+      }
           rightSectionImage {
             node {
               filePath(size: LARGE)

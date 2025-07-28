@@ -84,7 +84,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
     notFound();
   }
    
-
+console.log(post);
   return (
     <>
     <Header/>
@@ -100,7 +100,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
             </div>
             <div className="md:text-right">
               <p className="text-neutral-600 mb-4 max-w-md ml-auto">
-                {post.newServiceSection.serviceExpert}
+                {post.newServiceSection?.serviceExpert || "Our team of experts is ready to help you achieve your business goals."}
               </p>
               <a href="#" className="inline-flex items-center font-semibold text-neutral-800 hover:text-neutral-600">
                 See the plan <ChevronRight className="w-4 h-4 ml-1" />
@@ -109,7 +109,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
           </div>
           <div className="mt-12 md:mt-16 ">
             <Image
-              src={`https://techilaservices.com/${post.featuredImage.node.filePath}`}
+              src={post.featuredImage?.node?.filePath ? `https://techilaservices.com/${post.featuredImage.node.filePath}` : "/placeholder.svg"}
               alt="Featured Image of the Post"
               width={1200}
               height={600}
@@ -144,7 +144,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div dangerouslySetInnerHTML={{ __html: post.newServiceSection.leftContent }} />
+              <div dangerouslySetInnerHTML={{ __html: post.newServiceSection?.leftContent || post.content || "" }} />
                   
               <Button size="lg" className="bg-neutral-800 text-white hover:bg-neutral-700">
                 Contact Us <ChevronRight className="w-4 h-4 ml-2" />
@@ -152,10 +152,9 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
             </div>
             <div>
             
-      
 
 <Image
-          src={`https://techilaservices.com/${post.newServiceSection.rightSectionImage.node.filePath}`}
+          src={post.newServiceSection?.rightSectionImage?.node?.filePath ? `https://techilaservices.com/${post.newServiceSection.rightSectionImage.node.filePath}` : "/placeholder.svg"}
           alt="Two consultants collaborating"
           width={600}
                 height={700}
@@ -219,7 +218,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
       {/* Consultant Section */}
       <section className="relative py-16 md:py-24">
         <Image
-          src={`https://techilaservices.com/${post.newServiceSection.bottomBanner.node.filePath}`}
+          src={post.newServiceSection?.bottomBanner?.node?.filePath ? `https://techilaservices.com/${post.newServiceSection.bottomBanner.node.filePath}` : "/placeholder.svg"}
           alt="Two consultants collaborating"
           layout="fill"
           objectFit="cover"
@@ -230,7 +229,7 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
           
           <div className="bg-neutral-800 text-white p-8 md:p-10 text-center max-w-sm ml-auto md:absolute md:bottom-10 md:right-10 rounded-lg">
             <p className="text-5xl md:text-6xl font-bold mb-2">30+</p>
-            <p className="text-lg">{post.newServiceSection.bottomBannerStats}</p>
+            <p className="text-lg">{post.newServiceSection?.bottomBannerStats || "Projects Completed"}</p>
           </div>
         </div>
       </section>
@@ -244,17 +243,19 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
             </div>
             <div className="md:col-span-2">
               <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
-                {faqData.map((item, index) => (
+                {(post.newServiceSection?.servicesPageFaq || faqData).map((item: any, index: number) => (
                   <AccordionItem key={index} value={`item-${index}`} className="border-b border-neutral-200">
                     <AccordionTrigger className="py-6 text-left hover:no-underline group">
                       <span className="text-lg font-medium group-hover:text-neutral-600 flex-1 pr-4">
-                        {item.question}
+                        {item.faqQuestion || item.question}
                       </span>
                       {/* Custom icons for open/closed state */}
                       <Plus className="w-6 h-6 text-neutral-500 group-data-[state=open]:hidden transition-transform" />
                       <Minus className="w-6 h-6 text-neutral-500 group-data-[state=closed]:hidden transition-transform" />
                     </AccordionTrigger>
-                    <AccordionContent className="pt-0 pb-6 text-neutral-600">{item.answer}</AccordionContent>
+                    <AccordionContent className="pt-0 pb-6 text-neutral-600">
+                      {item.faqAnswer || item.answer}
+                    </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>

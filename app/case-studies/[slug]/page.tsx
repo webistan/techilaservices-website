@@ -166,7 +166,7 @@ const content = data?.nProject?.content;
               </section>
 
               {/* Impacts Section */}
-              <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-8 border-t border-b border-neutral-200">
+              {/* <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-8 border-t border-b border-neutral-200">
                 {study.impacts.map((impact, index) => (
                   <div key={index} className="text-center sm:text-left">
                     <impact.icon className="w-8 h-8 text-neutral-700 mb-3 mx-auto sm:mx-0" strokeWidth={1.5} />
@@ -174,10 +174,10 @@ const content = data?.nProject?.content;
                     <p className="text-sm text-neutral-600">{impact.description}</p>
                   </div>
                 ))}
-              </section>
+              </section> */}
 
               {/* Approach Section */}
-              <section>
+              {/* <section>
                 <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">{study.approach.title}</p>
                 <h2 className="text-2xl md:text-3xl font-semibold mb-4">{study.approach.heading}</h2>
                 <p className="text-neutral-600 mb-6">{study.approach.description}</p>
@@ -189,15 +189,15 @@ const content = data?.nProject?.content;
                     </li>
                   ))}
                 </ul>
-              </section>
+              </section> */}
 
               {/* Result Section */}
-              <section>
+              {/* <section>
                 <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">{study.result.title}</p>
                 <h2 className="text-2xl md:text-3xl font-semibold mb-4">{study.result.heading}</h2>
                 <p className="text-neutral-600 mb-4">{study.result.description1}</p>
                 <p className="text-neutral-600">{study.result.description2}</p>
-              </section>
+              </section> */}
             </div>
           </div>
         </div>
