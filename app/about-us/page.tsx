@@ -123,7 +123,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Experience Banner */}
+      {/* Experience Banner.. */}
       <section className="relative">
         <Image
           src="/images/sss.jpg?height=500&width=1200"
