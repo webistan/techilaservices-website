@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/@wordpress/block-library@latest/build/style.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,9 +92,6 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-  }
-  body, * {
-    cursor: none !important;
   }
 }
 
