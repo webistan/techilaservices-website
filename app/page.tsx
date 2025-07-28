@@ -17,10 +17,22 @@ import VideoPlayer from "@/components/ui/VideoPlayer"
 import FAQSection from "@/components/HomePageSections/FAQSection"
 import BlogSection from "@/components/HomePageSections/BlogSection"
 import RotatingTestimonial from "@/components/HomePageSections/RotatingTestimonial"
+import CaseStudiesSection from "@/components/HomePageSections/CaseStudiesSection"
+import { GET_CASE_STUDIES_WIDGET } from "@/lib/wp-queries";
+import { CaseStudy } from "@/components/HomePageSections/CaseStudiesSection";
+
+// Helper to convert slug to camel case
+function slugToCamelCase(slug: string) {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
 
 export default async function Home() {
   // Fetch home page data server-side
   const { data: homePageData, error } = await fetchWordPressQuery<HomePageData>(GET_HOME_PAGE_DATA);
+  const { data: caseStudiesWidgetData } = await fetchWordPressQuery<any>(GET_CASE_STUDIES_WIDGET);
 
   if (error) {
     console.error('Error fetching home page data:', error);
@@ -35,7 +47,26 @@ export default async function Home() {
 
   const processSectionData = pageData?.homePageWorkProcess;
   const faqSectionData = pageData?.homePageFaq;
- 
+
+  // Map case studies widget data
+  console.log("RAW DATA:", JSON.stringify(caseStudiesWidgetData, null, 2));
+  const caseStudies: CaseStudy[] = (caseStudiesWidgetData?.post?.caseStudiesWidget?.caseStudies?.edges || [])
+    .map((edge: any) => {
+      const node = edge.node;
+      let title = node.title;
+      if (!title && node.slug) {
+        title = slugToCamelCase(node.slug);
+      }
+      return {
+        id: node.id,
+        title,
+        excerpt: node.caseStudiesFields?.caseStudyExcerpt || node.excerpt,
+        image: node.featuredImage?.node?.sourceUrl || "/placeholder.svg",
+        slug: node.slug,
+      };
+    })
+    .filter((c: CaseStudy) => c.title && c.image && c.slug && c.excerpt);
+  console.log("MAPPED CASE STUDIES:", caseStudies);
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -70,6 +101,13 @@ export default async function Home() {
 
         <Section>
           <WorkProcessSection data={processSectionData} />
+        </Section>
+        <Section>
+          {caseStudies.length === 0 ? (
+            <div className="text-center text-red-500 py-12">No case studies found. Please check your WordPress data.</div>
+          ) : (
+            <CaseStudiesSection caseStudies={caseStudies} />
+          )}
         </Section>
         <Section>
           <BlogSection />

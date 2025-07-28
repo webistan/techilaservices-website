@@ -482,3 +482,34 @@ export const GET_STATS = gql`
   }
 `;
 
+export const GET_CASE_STUDIES_WIDGET = gql`
+  query GET_STATS {
+    post(id: "49017", idType: DATABASE_ID) {
+      id
+      caseStudiesWidget {
+        caseStudies {
+          edges {
+            node {
+              id
+              slug
+              ... on NProject {
+                id
+                title(format: RAW)
+                featuredImage {
+                  node {
+                    sourceUrl(size: LARGE)
+                  }
+                }
+                excerpt(format: RENDERED)
+                caseStudiesFields {
+                  caseStudyExcerpt
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
