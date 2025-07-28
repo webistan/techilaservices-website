@@ -126,7 +126,7 @@ export default function AboutPage() {
       {/* Experience Banner.. */}
       <section className="relative">
         <Image
-          src="/images/sss.jpg?height=500&width=1200"
+          src="/images/experience.png"
           alt="Team collaboration"
           width={1200}
           height={500}
@@ -230,7 +230,7 @@ export default function AboutPage() {
               </div>
                <div className="bg-white">
                   <Image 
-                    src="/images/our-mission.webp" 
+                    src="/images/mission.jpg" 
                     alt="Our Mission" 
                     width={500} 
                     height={300} 
@@ -242,7 +242,7 @@ export default function AboutPage() {
             <div className="grid grid-rows-2 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(255,124,28,0.35)]">
              <div className="bg-white">
                   <Image 
-                    src="/images/our-vision.jpg"
+                    src="/images/vision.jpg"
                     alt="Our Vision" 
                     width={500} 
                     height={300} 
