@@ -20,6 +20,7 @@ import RotatingTestimonial from "@/components/HomePageSections/RotatingTestimoni
 import CaseStudiesSection from "@/components/HomePageSections/CaseStudiesSection"
 import { GET_CASE_STUDIES_WIDGET } from "@/lib/wp-queries";
 import { CaseStudy } from "@/components/HomePageSections/CaseStudiesSection";
+import IpInfoLogger from "@/components/IpInfoLogger";
 
 // Helper to convert slug to camel case
 function slugToCamelCase(slug: string) {
@@ -69,6 +70,7 @@ export default async function Home() {
   console.log("MAPPED CASE STUDIES:", caseStudies);
   return (
     <div className="min-h-screen bg-background">
+      <IpInfoLogger />
       <Header />
       
       <main>
