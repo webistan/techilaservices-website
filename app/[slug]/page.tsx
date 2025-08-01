@@ -9,6 +9,12 @@ import { GET_BLOG_PAGE_BY_SLUG } from "@/lib/wp-queries"
 import { notFound } from "next/navigation"
 import CTA from "@/components/CTA"
 import ServiceTopBanner from "@/components/ServiceTopBanner";
+import ModernHeroBanner from "@/components/ModernHeroBanner";
+import StickyNavigationBar from "@/components/StickyNavigationBar";
+import ProcessSection from "@/components/ProcessSection";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+
+
 
 const faqData: { question: string; answer: string }[] = [
   {
@@ -84,11 +90,19 @@ export default async function BlogPageBySlug({ params }: { params: Promise<{ slu
     notFound();
   }
    
-console.log(post);
+console.log('Post data:', post);
+console.log('Our Process data:', post.newServiceSection?.ourProcess);
   return (
     <>
-    <Header/>
-    <ServiceTopBanner />
+   <Header/>
+    <ModernHeroBanner 
+      breadcrumbs={["Home", "Services", "Digital Transformation"]}
+      category="Salesforce Consultation"
+      post={post}
+      topButtonText="Get Free Consultation"
+      bottomButtonText="Start Your Transformation"
+    />
+    <StickyNavigationBar />
     <div className="bg-white text-neutral-800">
       {/* Hero Section */}
       <section className="relative bg-neutral-50 py-16 md:py-24 lg:py-32">
@@ -109,7 +123,7 @@ console.log(post);
           </div>
           <div className="mt-12 md:mt-16 ">
             <Image
-              src={post.featuredImage?.node?.filePath ? `https://techilaservices.com/${post.featuredImage.node.filePath}` : "/placeholder.svg"}
+              src={post.newServiceSection?.topBanner?.node?.sourceUrl || "/images/Salesforce-Consulting-Services-and-its-Benefits-optimized.jpg"}
               alt="Featured Image of the Post"
               width={1200}
               height={600}
@@ -144,7 +158,7 @@ console.log(post);
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div dangerouslySetInnerHTML={{ __html: post.newServiceSection?.leftContent || post.content || "" }} />
+              <div dangerouslySetInnerHTML={{ __html: post.newServiceSection?.leftContent || "" }} />
                   
               <Button size="lg" className="bg-neutral-800 text-white hover:bg-neutral-700">
                 Contact Us <ChevronRight className="w-4 h-4 ml-2" />
@@ -154,11 +168,11 @@ console.log(post);
             
 
 <Image
-          src={post.newServiceSection?.rightSectionImage?.node?.filePath ? `https://techilaservices.com/${post.newServiceSection.rightSectionImage.node.filePath}` : "/placeholder.svg"}
+          src={post.newServiceSection?.rightSectionImage?.node?.mediaItemUrl || "/images/Cloud-solutions.jpg"}
           alt="Two consultants collaborating"
           width={600}
-                height={700}
-         className="w-full h-auto object-cover rounded-lg shadow-lg"
+          height={700}
+          className="w-full h-auto object-cover rounded-lg shadow-lg"
         />
 
 
@@ -171,54 +185,15 @@ console.log(post);
       </section>
 
       {/* Process Section */}
-      <section className="py-16 md:py-24 bg-neutral-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-neutral-600 mb-4">
-              Myriam was first trained as a sculptor in Montreal and then in Helsinki, Finland. She is now based in
-              Quebec but works for clients all around the globe. From textile design to murals, editorial illustrations
-              and book covers, her style is recognized by her simple and perfectly arranged shapes as well as her rich
-              and vibrant color palette. Striking pewter studded epaulettes silver zips inner drawstring waist channel
-              urban edge breasted jacket. detail elegant with neutral color scheme quartz leather strap fasten buckle
-              clasp.
-            </p>
-            <p className="text-neutral-600">
-              However, the same reason also makes it messy. If someone is having a bad day, we might see it as a sign of
-              tension or lack of investment in the project, for outsider lacking an understanding of the complex
-              dynamics of a team can lead to the wrong conclusions.
-            </p>
-          </div>
+      <ProcessSection ourProcess={post.newServiceSection?.ourProcess} />
 
-          <div className="relative">
-            {/* Dotted line connector - simplified for responsiveness */}
-            <div
-              className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-neutral-300 -translate-y-1/2"
-              style={{ top: "calc(1.25rem + 4px)" }}
-            ></div>
-            <div className="grid md:grid-cols-4 gap-8">
-              {processSteps.map((item, index) => (
-                <div key={index} className="relative text-center md:text-left bg-white p-6 rounded-lg shadow-md">
-                  <div className="flex justify-center md:justify-start items-center mb-4">
-                    <div
-                      className={`w-8 h-8 rounded-full border-2 ${index === 0 ? "border-neutral-800 bg-neutral-800" : "border-neutral-400 bg-neutral-400"} flex items-center justify-center mr-3`}
-                    >
-                      {index === 0 && <div className="w-3 h-3 rounded-full bg-white"></div>}
-                    </div>
-                    <span className="text-sm font-semibold text-neutral-500">{item.step}</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-neutral-600 text-sm">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Why Choose Us Section */}
+      <WhyChooseUsSection data={post.newServiceSection?.whyChooseUs} />
 
       {/* Consultant Section */}
       <section className="relative py-16 md:py-24">
         <Image
-          src={post.newServiceSection?.bottomBanner?.node?.filePath ? `https://techilaservices.com/${post.newServiceSection.bottomBanner.node.filePath}` : "/placeholder.svg"}
+          src={post.newServiceSection?.bottomBanner?.node?.sourceUrl || "/images/experience.png"}
           alt="Two consultants collaborating"
           layout="fill"
           objectFit="cover"
@@ -235,7 +210,7 @@ console.log(post);
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24">
+      <section id="faq" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-1">
@@ -268,4 +243,4 @@ console.log(post);
     <Footer/>
     </>
   )
-}
+} 

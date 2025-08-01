@@ -9,8 +9,6 @@ import ModernHeroBanner from "@/components/ModernHeroBanner";
 import StickyNavigationBar from "@/components/StickyNavigationBar";
 import ProcessSection from "@/components/ProcessSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import { fetchWordPressQuery } from "../../../lib/fetch-wordpress-query";
-import { GET_PRODUCT_BY_SLUG } from "../../../lib/wp-queries";
 
 const faqData: { question: string; answer: string }[] = [
   {
@@ -78,112 +76,107 @@ const processSteps: { step: string; title: string; description: string }[] = [
   },
 ];
 
-export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
-  // Fetch dynamic product data on the server
-  const { data, error } = await fetchWordPressQuery<any>(GET_PRODUCT_BY_SLUG, { slug: params.slug });
-  const product = data?.productBy;
-
-  // Create a post object similar to the static page structure
-  const post = {
-    title: product?.title || "Product Service",
-    newServiceSection: {
-      serviceExpert: "Implement, deploy, and optimize solutions with a few simple clicks and smart AI support.",
-      leftContent: `
-        <h2 class="text-3xl font-bold mb-6">Transform Your Business with Digital Solutions</h2>
-        <p class="text-neutral-600 mb-4">
-          In today's rapidly evolving digital landscape, businesses need to adapt quickly to stay competitive. 
-          Our comprehensive digital transformation services help organizations modernize their operations, 
-          improve efficiency, and enhance customer experiences.
-        </p>
-        <p class="text-neutral-600 mb-6">
-          We specialize in cloud migration, process automation, data analytics, and digital strategy development. 
-          Our proven methodologies ensure successful implementation with minimal disruption to your business operations.
-        </p>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-center">
-            <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
-            Cloud Infrastructure & Migration
-          </li>
-          <li class="flex items-center">
-            <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
-            Process Automation & Optimization
-          </li>
-          <li class="flex items-center">
-            <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
-            Data Analytics & Business Intelligence
-          </li>
-          <li class="flex items-center">
-            <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
-            Digital Strategy & Consulting
-          </li>
-        </ul>
-      `,
-      rightSectionImage: {
-        node: {
-          filePath: "/images/Cloud-solutions.jpg"
+// Dummy data for the static page
+const dummyPost = {
+  title: "Salesforce Consultation Services",
+  newServiceSection: {
+    serviceExpert: "Implement, deploy, and optimize Salesforce with a few simple clicks and smart AI support.",
+    leftContent: `
+      <h2 class="text-3xl font-bold mb-6">Transform Your Business with Digital Solutions</h2>
+      <p class="text-neutral-600 mb-4">
+        In today's rapidly evolving digital landscape, businesses need to adapt quickly to stay competitive. 
+        Our comprehensive digital transformation services help organizations modernize their operations, 
+        improve efficiency, and enhance customer experiences.
+      </p>
+      <p class="text-neutral-600 mb-6">
+        We specialize in cloud migration, process automation, data analytics, and digital strategy development. 
+        Our proven methodologies ensure successful implementation with minimal disruption to your business operations.
+      </p>
+      <ul class="space-y-2 mb-6">
+        <li class="flex items-center">
+          <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
+          Cloud Infrastructure & Migration
+        </li>
+        <li class="flex items-center">
+          <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
+          Process Automation & Optimization
+        </li>
+        <li class="flex items-center">
+          <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
+          Data Analytics & Business Intelligence
+        </li>
+        <li class="flex items-center">
+          <span class="w-2 h-2 bg-neutral-800 rounded-full mr-3"></span>
+          Digital Strategy & Consulting
+        </li>
+      </ul>
+    `,
+    rightSectionImage: {
+      node: {
+        filePath: "/images/Cloud-solutions.jpg"
+      }
+    },
+    bottomBanner: {
+      node: {
+        filePath: "/images/hero-collage.png"
+      }
+    },
+    bottomBannerStats: "Digital Transformations Completed",
+    ourProcess: {
+      title: "Our Digital Transformation Process",
+      desc: "We follow a comprehensive approach to digital transformation that ensures successful implementation and measurable results. Our proven methodology combines industry best practices with innovative solutions tailored to your specific business needs.",
+      steps: [
+        {
+          title: "Discovery & Assessment",
+          content: "We begin by thoroughly understanding your current business processes, technology landscape, and strategic objectives. This includes stakeholder interviews, process mapping, and gap analysis."
+        },
+        {
+          title: "Strategy Development",
+          content: "Based on our assessment, we develop a comprehensive digital transformation roadmap that aligns with your business goals and includes clear milestones, timelines, and success metrics."
+        },
+        {
+          title: "Solution Design",
+          content: "Our team designs custom solutions that address your specific challenges while ensuring scalability, security, and integration with existing systems."
+        },
+        {
+          title: "Implementation & Deployment",
+          content: "We execute the transformation plan using agile methodologies, ensuring minimal disruption to your operations while delivering value incrementally."
+        },
+        {
+          title: "Optimization & Support",
+          content: "Post-implementation, we provide ongoing support, monitoring, and optimization to ensure your digital solutions continue to deliver maximum value."
         }
+      ]
+    },
+    servicesPageFaq: [
+      {
+        faqQuestion: "What is digital transformation and why is it important?",
+        faqAnswer: "Digital transformation is the integration of digital technology into all areas of a business, fundamentally changing how you operate and deliver value to customers. It's crucial for staying competitive in today's market."
       },
-      bottomBanner: {
-        node: {
-          filePath: "/images/hero-collage.png"
-        }
+      {
+        faqQuestion: "How long does a typical digital transformation project take?",
+        faqAnswer: "The timeline varies depending on the scope and complexity. Small projects might take 3-6 months, while comprehensive transformations can take 1-2 years. We work in phases to ensure continuous value delivery."
       },
-      bottomBannerStats: "Digital Transformations Completed",
-      ourProcess: {
-        title: "Our Product Implementation Process",
-        desc: "We follow a comprehensive approach to product implementation that ensures successful deployment and measurable results. Our proven methodology combines industry best practices with innovative solutions tailored to your specific business needs.",
-        steps: [
-          {
-            title: "Requirements Analysis",
-            content: "We begin by thoroughly understanding your business requirements, current systems, and strategic objectives. This includes stakeholder interviews, process mapping, and gap analysis."
-          },
-          {
-            title: "Solution Design",
-            content: "Based on our analysis, we design custom solutions that address your specific challenges while ensuring scalability, security, and integration with existing systems."
-          },
-          {
-            title: "Development & Testing",
-            content: "Our team develops and thoroughly tests the solution using agile methodologies, ensuring quality and reliability before deployment."
-          },
-          {
-            title: "Deployment & Training",
-            content: "We execute the deployment plan with minimal disruption to your operations, providing comprehensive training to ensure successful adoption."
-          },
-          {
-            title: "Support & Optimization",
-            content: "Post-deployment, we provide ongoing support, monitoring, and optimization to ensure your solution continues to deliver maximum value."
-          }
-        ]
+      {
+        faqQuestion: "What are the common challenges in digital transformation?",
+        faqAnswer: "Common challenges include resistance to change, legacy system integration, data security concerns, and skill gaps. Our approach addresses these challenges through proper change management and training."
       },
-      servicesPageFaq: [
-        {
-          faqQuestion: "What is digital transformation and why is it important?",
-          faqAnswer: "Digital transformation is the integration of digital technology into all areas of a business, fundamentally changing how you operate and deliver value to customers. It's crucial for staying competitive in today's market."
-        },
-        {
-          faqQuestion: "How long does a typical digital transformation project take?",
-          faqAnswer: "The timeline varies depending on the scope and complexity. Small projects might take 3-6 months, while comprehensive transformations can take 1-2 years. We work in phases to ensure continuous value delivery."
-        },
-        {
-          faqQuestion: "What are the common challenges in digital transformation?",
-          faqAnswer: "Common challenges include resistance to change, legacy system integration, data security concerns, and skill gaps. Our approach addresses these challenges through proper change management and training."
-        },
-        {
-          faqQuestion: "How do you measure the success of digital transformation?",
-          faqAnswer: "We establish clear KPIs at the beginning of each project, including efficiency metrics, cost savings, customer satisfaction scores, and revenue growth. Regular reporting ensures transparency and accountability."
-        },
-        {
-          faqQuestion: "Do you provide ongoing support after transformation?",
-          faqAnswer: "Yes, we offer comprehensive post-implementation support including maintenance, optimization, and continuous improvement services to ensure your digital solutions continue to deliver value."
-        }
-      ],
+      {
+        faqQuestion: "How do you measure the success of digital transformation?",
+        faqAnswer: "We establish clear KPIs at the beginning of each project, including efficiency metrics, cost savings, customer satisfaction scores, and revenue growth. Regular reporting ensures transparency and accountability."
+      },
+      {
+        faqQuestion: "Do you provide ongoing support after transformation?",
+        faqAnswer: "Yes, we offer comprehensive post-implementation support including maintenance, optimization, and continuous improvement services to ensure your digital solutions continue to deliver value."
+      }
+          ],
       whyChooseUs: {
         subHeading: "WHY CHOOSE US",
-        title: "Why Choose Our Product Implementation Services?",
+        title: "Why Choose Our Digital Transformation Services?",
         points: [
           {
-            title: "Expert Implementation",
-            content: "Our team consists of experienced professionals with deep expertise in product implementation, system integration, and business process optimization."
+            title: "Expert Team",
+            content: "Our team consists of experienced professionals with deep expertise in digital transformation, cloud technologies, and business process optimization."
           },
           {
             title: "Proven Methodology",
@@ -195,7 +188,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
           },
           {
             title: "End-to-End Support",
-            content: "From initial assessment to post-implementation support, we provide comprehensive services to ensure your product implementation journey is successful."
+            content: "From initial assessment to post-implementation support, we provide comprehensive services to ensure your digital transformation journey is successful."
           },
           {
             title: "ROI Focused",
@@ -210,18 +203,21 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
       }
     },
     featuredImage: {
-      node: {
-        filePath: product?.featuredImage?.node?.sourceUrl || "/images/hero-collage.jpg"
-      }
+    node: {
+      filePath: "/images/hero-collage.jpg"
     }
-  };
+  }
+};
+
+export default function StaticServicePage() {
+  const post = dummyPost;
    
   return (
     <>
     <Header/>
     <ModernHeroBanner 
-      breadcrumbs={["Home", "Services", product?.title || "Service"]}
-      category="Product Service"
+      breadcrumbs={["Home", "Services", "Digital Transformation"]}
+      category="Salesforce Consultation"
       post={post}
       topButtonText="Get Free Consultation"
       bottomButtonText="Start Your Transformation"
@@ -247,7 +243,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
           </div>
           <div className="mt-12 md:mt-16 ">
             <Image
-              src={product?.featuredImage?.node?.sourceUrl || "/images/Salesforce-Consulting-Services-and-its-Benefits-optimized.jpg"}
+              src="/images/Salesforce-Consulting-Services-and-its-Benefits-optimized.jpg"
               alt="Featured Image of the Post"
               width={1200}
               height={600}
@@ -289,13 +285,20 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
               </Button>
             </div>
             <div>
-              <Image
-                src="/images/Cloud-solutions.jpg"
-                alt="Two consultants collaborating"
-                width={600}
+            
+
+<Image
+          src= "/images/Cloud-solutions.jpg"
+          alt="Two consultants collaborating"
+          width={600}
                 height={700}
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
-              />
+         className="w-full h-auto object-cover rounded-lg shadow-lg"
+        />
+
+
+
+
+
             </div>
           </div>
         </div>
