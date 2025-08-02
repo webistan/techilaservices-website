@@ -343,9 +343,9 @@ homePageWorkProcess {
 }
 `;
 
-export const GET_MENU_ITEMS = gql`
-  query GetMenuItems($parentId: ID!) {
-    menuItems(where: {parentId: $parentId}) {
+export const GET_MENU_ITEMS_BY_LOCATION = gql`
+  query GetMenuItems($location: MenuLocationEnum!) {
+    menuItems(where: {location: $location}) {
       edges {
         node {
           id

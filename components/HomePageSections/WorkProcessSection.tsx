@@ -30,18 +30,11 @@ const WorkProcessSection = ({data}:ProcessDetail) => {
             {  data?.sectionHeading || "Our Work Processssss" }
             </h2>
             
-             <Link href={data?.processLink || "#"} className="inline-flex items-center" target="_blank"> 
-           
-
             <MoreAboutButton
                 className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 py-8"
                 buttonText="Work With Us"
-               href="/contact"
-              />      
-
-
-
-            </Link>
+                href="/contact"
+            />
           </div>
 
           {/* Right Content - Process Steps */}

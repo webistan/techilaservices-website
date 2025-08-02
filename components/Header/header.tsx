@@ -1,9 +1,9 @@
 import HeaderClient from "./HeaderClient";
-import { GET_MENU_ITEMS } from "@/lib/wp-queries";
+import { GET_MENU_ITEMS_BY_LOCATION } from "@/lib/wp-queries";
 import { fetchWordPressQuery } from "@/lib/fetch-wordpress-query";
 
 const Header = async () => {
-  const { data } = await fetchWordPressQuery(GET_MENU_ITEMS, { parentId: 0 });
+  const { data } = await fetchWordPressQuery(GET_MENU_ITEMS_BY_LOCATION, { location: "TOP" });
   console.log("datadatadatadatadata",data)
   const mapMenuItem = (node: any): any => ({
     id: node.id,
