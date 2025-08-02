@@ -15,16 +15,11 @@ const CTA: React.FC<CTAProps> = ({ heading, buttonText, buttonLink }) => (
           {heading}
         </h2>
       </div>
-      <a
+      <MoreAboutButton
+        className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
+        buttonText={buttonText}
         href={buttonLink}
-        className="mt-6 md:mt-0 inline-flex items-center text-[#000A64] font-semibold px-8 py-4 rounded-full shadow-lg transition hover:bg-neutral-100"
-      >
-        <MoreAboutButton
-          className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8 py-8 text-lg"
-          buttonText={buttonText}
-          href={buttonLink}
-        />
-      </a>
+      />
     </div>
   </section>
 );

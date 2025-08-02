@@ -76,7 +76,7 @@ export default function WhyChooseUsSection({ data }: WhyChooseUsSectionProps) {
 
             {/* Features Grid */}
             <div className="grid md:grid-cols-2 gap-6">
-              {sectionData.points.map((point, index) => (
+              {(sectionData.points || []).map((point, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
