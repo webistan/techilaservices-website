@@ -66,26 +66,55 @@ export const GET_BLOG_PAGE_BY_SLUG = gql`
         featuredImage {
           node {
             filePath
+            sourceUrl(size: LARGE)
           }
         }
         contentTypeName
         content(format: RENDERED)
+       
         newServiceSection {
           bottomBannerStats
           leftContent
           serviceExpert
-          bottomBanner {
+          topBanner {
             node {
-              filePath(size: LARGE)
+              sourceUrl(size: LARGE)
             }
           }
+          bottomBanner {
+            node {
+              sourceUrl(size: LARGE)
+            }
+          } ourProcess {
+          title
+          desc
+          steps {
+            title
+            content
+          }
+        }
+          whyChooseUs {
+        subHeading
+        title
+        points {
+          content
+          title
+        }
+        chooseusImage {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
             servicesPageFaq {
         faqAnswer
         faqQuestion
       }
+
           rightSectionImage {
             node {
               filePath(size: LARGE)
+              mediaItemUrl
             }
           }
         }
