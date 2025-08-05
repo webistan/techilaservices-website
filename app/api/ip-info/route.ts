@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+// Fetching country code from ipinfo.io
 export async function GET() {
   try {
     const response = await fetch("https://ipinfo.io/json");
