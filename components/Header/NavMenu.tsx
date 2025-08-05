@@ -48,12 +48,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
 
       {/* Desktop Menu */}
       <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/about-us" className="text-foreground/80 hover:text-[#F97316] transition-colors">
-                About Us
-              </Link>
-              <Link href="/products" className="text-foreground/80 hover:text-[#F97316] transition-colors">
-                Products
-              </Link>
         {menuItems && menuItems.length > 0 ? (
           menuItems.map((node: any) => {
             const hasChildren = node.childItems && node.childItems.edges.length > 0;
@@ -164,25 +158,15 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                 )}
               </div>
             ) : (
-              ""
-              // <Link key={node.id} href="#" className="text-foreground/80 hover:text-[#F97316] transition-colors">
-              //   {node.label}
-              // </Link>
+              <Link key={node.id} href={node.uri || '#'} className="text-foreground/90 hover:text-[#F97316] transition-colors">
+                {node.label}
+              </Link>
             );
             
           })
         ) : (
           <span className="text-foreground/60">No menu items</span>
         )}
-        <Link href="/case-studies" className="text-foreground/80 hover:text-[#F97316] transition-colors">
-                Case Studies
-              </Link>
-        <Link href="/blogs" className="text-foreground/80 hover:text-[#F97316] transition-colors">
-                Blogs
-      </Link>
-      <Link href="/career" className="text-foreground/80 hover:text-[#F97316] transition-colors">
-                Career
-      </Link>
       </nav>
 
       {/* Mobile Menu Drawer */}
