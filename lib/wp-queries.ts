@@ -343,24 +343,52 @@ homePageWorkProcess {
 }
 `;
 
-export const GET_MENU_ITEMS_BY_LOCATION = gql`
-  query GetMenuItems($location: MenuLocationEnum!) {
-    menuItems(where: {location: $location}) {
+export const GET_ALL_MENUS = gql`
+  query GetAllMenus {
+    menus {
       edges {
         node {
           id
-          label
-          childItems {
+          name
+          slug
+          menuItems {
             edges {
               node {
                 id
                 label
-                childItems {
-                  edges {
-                    node {
-                      id
-                      label
-                      uri
+                uri
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_MENU_ITEMS_BY_SLUG = gql`
+  query GetFullMenu($menuId: ID!) {
+    menu(id: $menuId, idType: SLUG  ) {
+      id
+      menuItems(where: {parentId: "0"}) {
+        edges {
+          node {
+            id
+            label
+            uri
+            childItems(first: 100) {
+              edges {
+                node {
+                  id
+                  label
+                  uri
+                  childItems(first: 100) {
+                    edges {
+                      node {
+                        id
+                        label
+                        uri
+                      }
                     }
                   }
                 }
@@ -369,7 +397,7 @@ export const GET_MENU_ITEMS_BY_LOCATION = gql`
           }
         }
       }
-    } 
+    }
   }
 `;
 
