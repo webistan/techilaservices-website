@@ -167,7 +167,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
                 )}
               </div>
             ) : (
-              <Link key={node.id} href={node.uri || '#'} className="text-foreground/90 hover:text-[#F97316] transition-colors">
+              <Link key={node.id} href={node.uri || node.url || '#'} className="text-foreground/90 hover:text-[#F97316] transition-colors">
                 {node.label}
               </Link>
             );
