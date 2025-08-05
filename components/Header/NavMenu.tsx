@@ -55,7 +55,16 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuItems, openMenu, setOpenMenu, hov
               <div
                 key={node.id}
                 className="relative group"
-                onMouseEnter={() => setOpenMenu(node.id)}
+                onMouseEnter={() => {
+                  setOpenMenu(node.id);
+                  // Set hoveredLevel2 to the first child if not already set or if switching menus
+                  if (
+                    !hoveredLevel2 ||
+                    !node.childItems.edges.some(({ node: l2 }: { node: MenuItem }) => l2.id === hoveredLevel2)
+                  ) {
+                    setHoveredLevel2(node.childItems.edges[0]?.node.id || null);
+                  }
+                }}
                 onMouseLeave={() => { setOpenMenu(null); setHoveredLevel2(null); }}
               >
                 <span className="text-foreground/90 hover:text-[#F97316] transition-colors cursor-pointer flex items-center font-medium text-base gap-1">
