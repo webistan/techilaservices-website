@@ -42,42 +42,48 @@ const HeaderClient = ({ menuItems }: HeaderClientProps) => {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-sm"
-          : "bg-background"
-      )}
-    >
-      <div className="mx-auto flex items-center justify-between px-6 py-6">
-        <Link href="/" className="text-2xl font-bold text-foreground">
-          <Image
-            src={"/images/logo.webp"}
-            width={120}
-            height={120}
-            alt="TechillaSolutions"
-          />
-          
-        </Link>
-        <NavMenu
-          menuItems={menuItems}
-          openMenu={openMenu}
-          setOpenMenu={setOpenMenu}
-          hoveredLevel2={hoveredLevel2}
-          setHoveredLevel2={setHoveredLevel2}
-        />
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Search className="w-4 h-4" />
-          </Button>
-          <Link href="/contact">
-            <Button className="rounded-full px-6">Let's Talk</Button>
-          </Link>
-        </div>
+    <>
+      {/* News Alert Section */}
+      <div className="w-full bg-yellow-100 text-yellow-900 text-center py-2 px-4 text-sm font-medium">
+        🚨 News Alert: Techila Global Services is now Salesforce.com Summit Partner
       </div>
-    </header>
+      <header
+        className={cn(
+          "sticky top-0 z-50 w-full transition-all duration-300",
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md shadow-sm"
+            : "bg-background"
+        )}
+      >
+        <div className="mx-auto flex items-center justify-between px-6 py-6">
+          <Link href="/" className="text-2xl font-bold text-foreground">
+            <Image
+              src={"/images/logo.webp"}
+              width={120}
+              height={120}
+              alt="TechillaSolutions"
+            />
+            
+          </Link>
+          <NavMenu
+            menuItems={menuItems}
+            openMenu={openMenu}
+            setOpenMenu={setOpenMenu}
+            hoveredLevel2={hoveredLevel2}
+            setHoveredLevel2={setHoveredLevel2}
+          />
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <Search className="w-4 h-4" />
+            </Button>
+            <Link href="/contact">
+              <Button className="rounded-full px-6">Let's Talk</Button>
+            </Link>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 
-export default HeaderClient; 
+export default HeaderClient;
