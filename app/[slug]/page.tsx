@@ -197,7 +197,6 @@ console.log('Our Process data:', post.newServiceSection?.ourProcess);
           src={post.newServiceSection?.bottomBanner?.node?.sourceUrl || "/images/experience.png"}
           alt="Two consultants collaborating"
           layout="fill"
-          objectFit="cover"
           className="absolute inset-0 z-0"
         />
         <div className="absolute inset-0 bg-black/30 z-0"></div>
