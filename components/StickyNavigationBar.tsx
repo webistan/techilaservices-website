@@ -37,7 +37,7 @@ export default function StickyNavigationBar({
   }
 
   return (
-    <div className={`bg-gray-100 border-b border-gray-200 transition-all duration-300 ${isSticky ? 'sticky top-[80px] z-50 shadow-md' : ''}`}>
+    <div className={`bg-gray-100 border-b border-gray-200 transition-all duration-300 ${isSticky ? 'sticky top-[80px] z-40 shadow-md' : ''}`}>
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-center space-x-8 py-4">
           {sections.map((section) => (
@@ -55,4 +55,4 @@ export default function StickyNavigationBar({
       </div>
     </div>
   )
-} 
+}
