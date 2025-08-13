@@ -79,9 +79,15 @@ export default function WhyChooseUsSection({ data }: WhyChooseUsSectionProps) {
               {(sectionData.points || []).map((point, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                      <Check className="w-4 h-4 text-white" />
-                    </div>
+                     
+                      <Image 
+                    src="/images/Tick-common-icon.png" 
+                    alt="Completed step" 
+                    width={24} 
+                    height={24} 
+                    className="object-contain"
+                  />
+                    
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">{point.title}</h3>

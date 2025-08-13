@@ -154,8 +154,9 @@ console.log('Our Process data:', post.newServiceSection?.ourProcess);
       />
 
       {/* Offerings Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24" id="overview">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12"><p className="text-sm uppercase tracking-widest text-gray-500 mb-2">Overview</p><div className="flex items-center justify-center gap-3 mb-4"><div className="w-1 h-8 bg-red-500"></div><h2 className="text-3xl md:text-4xl font-bold text-red-500">{post.title}</h2></div><div className="w-20 h-1 bg-red-500 mx-auto"></div></div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div dangerouslySetInnerHTML={{ __html: post.newServiceSection?.leftContent || "" }} />
