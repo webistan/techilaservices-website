@@ -82,8 +82,16 @@ export default function ProcessSection({ ourProcess }: ProcessSectionProps) {
           <div className="flex flex-wrap justify-between gap-4">
             {steps.map((step: ProcessStep, index: number) => (
               <div key={index} className="relative text-center flex-1 min-w-[200px]">
-                {/* Timeline Dot */}
-                <div className="w-4 h-4 bg-black rounded-full mx-auto mb-6 relative z-10"></div>
+                {/* Timeline Dot - Replaced with checkmark image */}
+                <div className="w-6 h-6 mx-auto mb-6 relative z-10">
+                  <Image 
+                    src="/images/Tick-common-icon.png" 
+                    alt="Completed step" 
+                    width={24} 
+                    height={24} 
+                    className="object-contain"
+                  />
+                </div>
                 
                 {/* Step Content */}
                 <div className="space-y-4">
@@ -100,4 +108,4 @@ export default function ProcessSection({ ourProcess }: ProcessSectionProps) {
       </div>
     </section>
   )
-} 
+}
